@@ -6,4 +6,7 @@
     <string name="lastname">Nom</string>
     <string name="name">Prénom</string>
     <string name="i_user_information">I. Information utilisateur</string>
+    <string name="what_kind_of_dreamer_are_you">Quel rêveur êtes-vous ?</string>
+    <string name="ii_memories_of_dreams">II. Souvenir des rêves</string>
+    <string name="how_often_do_you_have_dreams">À quelle fréquence faites vous des rêves ?</string>
 </resources>

@@ -5,4 +5,7 @@
     <string name="lastname">LastName</string>
     <string name="name">Name</string>
     <string name="i_user_information">I. User information</string>
+    <string name="what_kind_of_dreamer_are_you">What kind of dreamer are you?</string>
+    <string name="ii_memories_of_dreams">II. Memories of dreams</string>
+    <string name="how_often_do_you_have_dreams">How often do you have dreams ?</string>
 </resources>
