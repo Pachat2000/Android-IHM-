@@ -5,17 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="5"
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +27,7 @@
 
             <LinearLayout
                 android:id="@+id/container_section1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF"
                 android:backgroundTint="#FFFFFF"
@@ -42,7 +37,7 @@
                     android:id="@+id/header_section1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#DBCECE"
+                    android:background="#95231E1E"
                     android:orientation="horizontal">
 
                     <TextView
@@ -50,21 +45,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
-                        android:text="I. User information" />
+                        android:text="@string/i_user_information" />
 
                     <ImageView
                         android:id="@+id/ImgArrowSectionUp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:contentDescription="@string/arrow_that_show_the_content_of_this_section"
                         app:srcCompat="@android:drawable/arrow_up_float" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/body_section1"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:baselineAligned="false"
                     android:orientation="vertical"
                     android:visibility="visible">
 
@@ -72,6 +69,7 @@
                         android:id="@+id/bodyHori1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:baselineAligned="false"
                         android:orientation="horizontal"
                         android:paddingTop="16dp">
 
@@ -79,46 +77,51 @@
                             android:id="@+id/itemQuestion1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="5"
+                            android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/lblName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Name" />
+                                android:text="@string/name" />
 
                             <EditText
                                 android:id="@+id/editName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:autofillHints=""
                                 android:ems="10"
-                                android:hint="Name"
+                                android:hint="@string/name"
                                 android:inputType="text"
-                                android:minHeight="48dp" />
+                                android:minHeight="48dp"
+                                android:textColorHint="#757575" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/itemQuestion2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="5"
+                            android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/lblLastName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="LastName" />
+                                android:text="@string/lastname" />
 
                             <EditText
                                 android:id="@+id/editLastName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:autofillHints=""
+                                android:baselineAligned="false"
                                 android:ems="10"
-                                android:hint="LastName"
+                                android:hint="@string/lastname"
                                 android:inputType="text"
-                                android:minHeight="48dp" />
+                                android:minHeight="48dp"
+                                android:textColorHint="#757575" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -126,34 +129,48 @@
                     <LinearLayout
                         android:id="@+id/bodyHori2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:baselineAligned="false"
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/itemQuestion3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/lblAge"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Age" />
+                                android:text="@string/age" />
 
                             <EditText
                                 android:id="@+id/editAge"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:autofillHints=""
                                 android:ems="10"
-                                android:hint="Age"
-                                android:inputType="text"
+                                android:hint="@string/age"
+                                android:inputType="number"
                                 android:minHeight="48dp" />
+
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/Space"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"></LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
