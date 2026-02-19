@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +35,21 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout body2 = findViewById(R.id.body_section2);
         ImageView arrow2 = findViewById(R.id.ImgArrowSectionUp2);
 
+        LinearLayout header3 = findViewById(R.id.header_section3);
+        LinearLayout body3 = findViewById(R.id.body_section3);
+        ImageView arrow3 = findViewById(R.id.imgArrowSection3);
+
         TextView seekBarText = findViewById(R.id.lblSeekbarTracker);
         seekBarText.setText("0");
         SeekBar seekBar = findViewById(R.id.lblSeekBar);
-
-
-
 
         setupAction(header1, body1, arrow1);
 
         setupAction(header2, body2, arrow2);
 
         setupAction(seekBar, seekBarText);
+
+        setupAction(header3, body3, arrow3);
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){

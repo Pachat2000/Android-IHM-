@@ -18,4 +18,10 @@
     <string name="lastname_lbl">Nom :</string>
     <string name="name_lbl">Prénom :</string>
     <string name="email_lbl">Email :</string>
+    <string name="iii_dream_content">III. Contenu des rêves</string>
+    <string name="fall">Tomber</string>
+    <string name="family">Famille</string>
+    <string name="love">Amour</string>
+    <string name="which_topics_come_up_most_often">Quels thèmes reviennent le plus souvent ?</string>
+    <string name="work">Travail</string>
 </resources>

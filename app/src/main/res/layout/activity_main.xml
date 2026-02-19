@@ -25,7 +25,9 @@
     <ScrollView
         android:layout_width="332dp"
         android:layout_height="514dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -195,16 +197,16 @@
                     android:id="@+id/header_section2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#A6A4A4"
+                    android:background="#646363"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/lblMemoryDream"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="9"
+                        android:layout_weight="8"
                         android:text="@string/ii_memories_of_dreams"
-                        android:textColor="#263238" />
+                        android:textColor="#E0E0E0" />
 
                     <ImageView
                         android:id="@+id/ImgArrowSectionUp2"
@@ -309,6 +311,321 @@
                                 android:minHeight="48dp"
                                 android:text="@string/never" />
                         </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_section3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/header_section3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#943B3B"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lblDreamContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"
+                        android:text="@string/iii_dream_content"
+                        android:textColor="#D7CCC8" />
+
+                    <ImageView
+                        android:id="@+id/imgArrowSection3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/arrow_that_show_the_content_of_this_section"
+                        app:srcCompat="@android:drawable/arrow_up_float" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/body_section3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/lblQuestion7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/which_topics_come_up_most_often" />
+
+                    <LinearLayout
+                        android:id="@+id/bodyHoriLbl"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#A9EBE1E1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/lblSpace"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/lblOften"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:text="@string/often" />
+
+                        <TextView
+                            android:id="@+id/lblSometime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:text="@string/sometimes" />
+
+                        <TextView
+                            android:id="@+id/lblRarely"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:text="@string/rarely" />
+
+                        <TextView
+                            android:id="@+id/lblNever"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:text="@string/never" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bodyHoriFamily"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/lblFamily"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:paddingTop="12dp"
+                            android:text="@string/family"
+                            android:textAlignment="center" />
+
+                        <RadioGroup
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rbFamilyOften"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/rbFamilySometime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/rbFamilyRarely"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/rbFamilyNever"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bodyHoriLove"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/lblLove"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:paddingTop="12dp"
+                            android:text="@string/love"
+                            android:textAlignment="center" />
+
+                        <RadioGroup
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rbLoveOften"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/rbLoveSometime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/rbLoveRarely"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/rbLoveNever"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bodyHoriWork"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/lblWork"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:paddingTop="12dp"
+                            android:text="@string/work"
+                            android:textAlignment="center" />
+
+                        <RadioGroup
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:minWidth="48dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rbWorkOften"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:maxWidth="48dp"
+                                android:minHeight="48dp" />
+
+                            <RadioButton
+                                android:id="@+id/rbWorkSometime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:maxWidth="48dp"
+                                android:minHeight="48dp" />
+
+                            <RadioButton
+                                android:id="@+id/rbWorkRarely"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:maxWidth="48dp"
+                                android:minHeight="48dp" />
+
+                            <RadioButton
+                                android:id="@+id/rbWorkNever"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:maxWidth="48dp"
+                                android:minHeight="48dp" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bodyHoriFall"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/lblFall"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#A9EBE1E1"
+                            android:paddingTop="12dp"
+                            android:text="@string/fall"
+                            android:textAlignment="center" />
+
+                        <RadioGroup
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:minWidth="48dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rbFallOften"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:width="48dp"
+                                android:maxWidth="48dp"
+                                android:minWidth="48dp"
+                                android:minHeight="48dp" />
+
+                            <RadioButton
+                                android:id="@+id/rbFallSometime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:width="48dp"
+                                android:maxWidth="48dp"
+                                android:minWidth="48dp"
+                                android:minHeight="48dp" />
+
+                            <RadioButton
+                                android:id="@+id/rbFallRarely"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:width="48dp"
+                                android:maxWidth="48dp"
+                                android:minWidth="48dp"
+                                android:minHeight="48dp" />
+
+                            <RadioButton
+                                android:id="@+id/rbFallNever"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:width="48dp"
+                                android:maxWidth="48dp"
+                                android:minWidth="48dp"
+                                android:minHeight="48dp" />
+                        </RadioGroup>
 
                     </LinearLayout>
 

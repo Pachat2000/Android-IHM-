@@ -11,10 +11,16 @@
     <string name="how_detailed_are_your_dreams">How detailed are your dreams?</string>
     <string name="do_you_ever_have_lucid_dreams">Do you ever have lucid dreams?</string>
     <string name="often">Often</string>
-    <string name="sometimes">Sometimes</string>
+    <string name="sometimes">Sometime</string>
     <string name="rarely">Rarely</string>
     <string name="never">Never</string>
     <string name="lastname_lbl">LastName :</string>
     <string name="name_lbl">Name :</string>
     <string name="email_lbl">Email :</string>
+    <string name="iii_dream_content">III. Dream content</string>
+    <string name="fall">Fall</string>
+    <string name="family">Family</string>
+    <string name="love">Love</string>
+    <string name="which_topics_come_up_most_often">Which topics come up most often ?</string>
+    <string name="work">Work</string>
 </resources>
