@@ -23,8 +23,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="329dp"
-        android:layout_height="286dp"
+        android:layout_width="332dp"
+        android:layout_height="514dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,7 @@
                     android:layout_height="match_parent"
                     android:baselineAligned="false"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:id="@+id/bodyHori1"
@@ -100,7 +100,7 @@
                                 android:id="@+id/lblName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/name" />
+                                android:text="@string/name_lbl" />
 
                             <EditText
                                 android:id="@+id/editName"
@@ -125,7 +125,7 @@
                                 android:id="@+id/lblLastName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/lastname" />
+                                android:text="@string/lastname_lbl" />
 
                             <EditText
                                 android:id="@+id/editLastName"
@@ -154,23 +154,22 @@
                             android:id="@+id/itemQuestion3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/lblAge"
+                                android:id="@+id/lblEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/age" />
+                                android:text="@string/email_lbl" />
 
                             <EditText
-                                android:id="@+id/editAge"
+                                android:id="@+id/editEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:autofillHints=""
+                                android:autofillHints="@string/email"
                                 android:ems="10"
-                                android:hint="@string/age"
-                                android:inputType="number"
+                                android:hint="@string/email"
+                                android:inputType="textEmailAddress"
                                 android:minHeight="48dp" />
 
                         </LinearLayout>
@@ -179,7 +178,6 @@
                             android:id="@+id/Space"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
                             android:orientation="vertical"></LinearLayout>
 
                     </LinearLayout>
@@ -222,7 +220,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:paddingTop="16dp">
+                    android:paddingTop="16dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/lblQuestion4"
@@ -231,7 +230,7 @@
                         android:text="@string/how_often_do_you_have_dreams" />
 
                     <TextView
-                        android:id="@+id/lblSeekbarTrackere"
+                        android:id="@+id/lblSeekbarTracker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:translationX="10dp" />
@@ -244,6 +243,74 @@
                         android:max="10"
                         android:maxWidth="5dp"
                         android:progressTint="#562525" />
+
+                    <TextView
+                        android:id="@+id/lblQuestion5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/how_detailed_are_your_dreams" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBar3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:numStars="5" />
+
+                    <TextView
+                        android:id="@+id/lblQuestion6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/do_you_ever_have_lucid_dreams" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/swtAnswerOften"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:text="@string/often" />
+
+                            <Switch
+                                android:id="@+id/swtAnswerSometime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:text="@string/sometimes" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <Switch
+                                android:id="@+id/swtAnswerRarely"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:text="@string/rarely" />
+
+                            <Switch
+                                android:id="@+id/swtAnswerNever"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="48dp"
+                                android:text="@string/never" />
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

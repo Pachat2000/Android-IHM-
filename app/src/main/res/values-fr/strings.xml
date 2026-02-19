@@ -2,11 +2,20 @@
 <resources>
     <string name="app_name">Project IHM</string>
     <string name="arrow_that_show_the_content_of_this_section">Flèche qui montre le contenue de cette section</string>
-    <string name="age">Age</string>
+    <string name="email">Email</string>
     <string name="lastname">Nom</string>
     <string name="name">Prénom</string>
     <string name="i_user_information">I. Information utilisateur</string>
     <string name="what_kind_of_dreamer_are_you">Quel rêveur êtes-vous ?</string>
     <string name="ii_memories_of_dreams">II. Souvenir des rêves</string>
     <string name="how_often_do_you_have_dreams">À quelle fréquence faites vous des rêves ?</string>
+    <string name="how_detailed_are_your_dreams">"À quel point vos rêves sont-ils détaillés ? "</string>
+    <string name="do_you_ever_have_lucid_dreams">Vous arrive-t-il de faire des rêves lucides ?</string>
+    <string name="often">Souvent</string>
+    <string name="sometimes">Parfois</string>
+    <string name="rarely">Rarement</string>
+    <string name="never">Jamais</string>
+    <string name="lastname_lbl">Nom :</string>
+    <string name="name_lbl">Prénom :</string>
+    <string name="email_lbl">Email :</string>
 </resources>

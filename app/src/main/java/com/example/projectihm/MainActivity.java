@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout body2 = findViewById(R.id.body_section2);
         ImageView arrow2 = findViewById(R.id.ImgArrowSectionUp2);
 
-        TextView seekBarText = findViewById(R.id.lblSeekbarTrackere);
+        TextView seekBarText = findViewById(R.id.lblSeekbarTracker);
         seekBarText.setText("0");
         SeekBar seekBar = findViewById(R.id.lblSeekBar);
 
