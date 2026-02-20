@@ -24,4 +24,16 @@
     <string name="love">Amour</string>
     <string name="which_topics_come_up_most_often">Quels thèmes reviennent le plus souvent ?</string>
     <string name="work">Travail</string>
+    <string name="do_you_dream_about_real_people">Rêvez-vous de personnes réelles ?</string>
+    <string name="iv_emotions">IV. Emotions</string>
+    <string name="anger">Colère</string>
+    <string name="confusion">Confusion</string>
+    <string name="joy">Joie</string>
+    <string name="serenity">Sérénité</string>
+    <string name="sadness">Tristesse</string>
+    <string name="fear">Peur</string>
+    <string name="stress">Stress</string>
+    <string name="in_your_opinion_your_dreams_are_mainly">Selon vous, vos rêves sont surtout :</string>
+    <string name="what_emotion_dominates_most_often_in_your_dreams">Quelle émotion domine le plus souvent dans vos rêves ?</string>
+    <string name="result">Résultat</string>
 </resources>

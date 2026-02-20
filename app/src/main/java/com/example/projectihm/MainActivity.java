@@ -2,9 +2,12 @@ package com.example.projectihm;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
@@ -39,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout body3 = findViewById(R.id.body_section3);
         ImageView arrow3 = findViewById(R.id.imgArrowSection3);
 
+        LinearLayout header4 = findViewById(R.id.header_section4);
+        LinearLayout body4 = findViewById(R.id.body_section4);
+        ImageView arrow4 = findViewById(R.id.ImgArrowSectionUp3);
+
+        Spinner spinner = findViewById(R.id.spinner);
+
+
+
         TextView seekBarText = findViewById(R.id.lblSeekbarTracker);
         seekBarText.setText("0");
         SeekBar seekBar = findViewById(R.id.lblSeekBar);
@@ -50,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         setupAction(seekBar, seekBarText);
 
         setupAction(header3, body3, arrow3);
+        setupAction(header4, body4, arrow4);
+        setupSpinner(spinner);
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){
@@ -82,4 +98,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void setupSpinner(Spinner spinner){
+        List<String> list = new ArrayList<>();
+        list.add("Le reflet de mon stress");
+        list.add("Le reflet de mes désirs");
+        list.add("Symboliques");
+        list.add("Inspirés de ma vie quotidienne");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+    }
 }
