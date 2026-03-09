@@ -35,4 +35,8 @@
     <string name="in_your_opinion_your_dreams_are_mainly">In your opinion, your dreams are mainly :</string>
     <string name="what_emotion_dominates_most_often_in_your_dreams">What emotion dominates most often in your dreams ?</string>
     <string name="result">Result</string>
+    <string name="listitem1">Reflect of my stress</string>
+    <string name="listitem2">Reflect of my desire</string>
+    <string name="listitem3">Symbolic</string>
+    <string name="listitem4">Inspired of my everyday life</string>
 </resources>

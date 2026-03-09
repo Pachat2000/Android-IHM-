@@ -100,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupSpinner(Spinner spinner){
         List<String> list = new ArrayList<>();
-        list.add("Le reflet de mon stress");
-        list.add("Le reflet de mes désirs");
-        list.add("Symboliques");
-        list.add("Inspirés de ma vie quotidienne");
+        list.add(getString(R.string.listitem1));
+        list.add(getString(R.string.listitem2));
+        list.add(getString(R.string.listitem3));
+        list.add(getString(R.string.listitem4));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
