@@ -5,11 +5,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +24,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projectihm.answers.Answers;
 import com.example.projectihm.dbmanager.AppDatabase;
 import com.example.projectihm.users.Users;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -35,6 +43,35 @@ public class MainActivity extends AppCompatActivity {
     private EditText userFirstName;
     private EditText userLastName;
     private EditText userEmailAdress;
+
+    private SeekBar dreamFrequency;
+    private RatingBar dreamDetails;
+
+    private Switch sOften;
+    private Switch sRarely;
+    private Switch sSometime;
+    private Switch sNever;
+
+    private RadioButton rbFamillyN;
+    private RadioButton rbFamillyO;
+    private RadioButton rbFamillyR;
+    private RadioButton rbFamillyS;
+
+    private RadioButton rbLoveN;
+    private RadioButton rbLoveO;
+    private RadioButton rbLoveR;
+    private RadioButton rbLoveS;
+
+    private RadioButton rbWorkN;
+    private RadioButton rbWorkO;
+    private RadioButton rbWorkR;
+    private RadioButton rbWorkS;
+
+    private RadioButton rbFallN;
+    private RadioButton rbFallO;
+    private RadioButton rbFallR;
+    private RadioButton rbFallS;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +106,13 @@ public class MainActivity extends AppCompatActivity {
 
         TextView seekBarText = findViewById(R.id.lblSeekbarTracker);
         seekBarText.setText("0");
-        SeekBar seekBar = findViewById(R.id.lblSeekBar);
+        dreamFrequency = findViewById(R.id.lblSeekBar);
 
         setupAction(header1, body1, arrow1);
 
         setupAction(header2, body2, arrow2);
 
-        setupAction(seekBar, seekBarText);
+        setupAction(dreamFrequency, seekBarText);
 
         setupAction(header3, body3, arrow3);
         setupAction(header4, body4, arrow4);
@@ -84,6 +121,37 @@ public class MainActivity extends AppCompatActivity {
         userFirstName = findViewById(R.id.editName);
         userLastName = findViewById(R.id.editLastName);
         userEmailAdress = findViewById(R.id.editEmail);
+
+        dreamDetails = findViewById(R.id.ratingBar3);
+
+        sOften = findViewById(R.id.swtAnswerOften);
+        sOften.setOnCheckedChangeListener(swtGroupListener);
+        sRarely = findViewById(R.id.swtAnswerRarely);
+        sRarely.setOnCheckedChangeListener(swtGroupListener);
+        sSometime = findViewById(R.id.swtAnswerSometime);
+        sSometime.setOnCheckedChangeListener(swtGroupListener);
+        sNever = findViewById(R.id.swtAnswerNever);
+        sNever.setOnCheckedChangeListener(swtGroupListener);
+
+        rbFamillyN = findViewById(R.id.rbFamilyNever);
+        rbFamillyO = findViewById(R.id.rbFamilyOften);
+        rbFamillyR = findViewById(R.id.rbFamilyRarely);
+        rbFamillyS = findViewById(R.id.rbFamilySometime);
+
+        rbLoveN = findViewById(R.id.rbLoveNever);
+        rbLoveO = findViewById(R.id.rbLoveOften);
+        rbLoveR = findViewById(R.id.rbLoveRarely);
+        rbLoveS = findViewById(R.id.rbLoveSometime);
+
+        rbWorkN = findViewById(R.id.rbWorkNever);
+        rbWorkO = findViewById(R.id.rbWorkOften);
+        rbWorkR = findViewById(R.id.rbWorkRarely);
+        rbWorkS = findViewById(R.id.rbWorkSometime);
+
+        rbFallN = findViewById(R.id.rbFallNever);
+        rbFallO = findViewById(R.id.rbFallOften);
+        rbFallR = findViewById(R.id.rbFallRarely);
+        rbFallS = findViewById(R.id.rbFallSometime);
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){
@@ -128,6 +196,21 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
+    /***
+     * Listener to set all switch to unchecked if one is checked
+     */
+    Switch.OnCheckedChangeListener swtGroupListener = new Switch.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (isChecked) {
+                if (buttonView != sOften) sOften.setChecked(false);
+                if (buttonView != sRarely) sRarely.setChecked(false);
+                if (buttonView != sSometime) sSometime.setChecked(false);
+                if (buttonView != sNever) sNever.setChecked(false);
+            }
+        }
+    };
+
     public void addUser(View view){
         AppDatabase db = AppDatabase.getDatabase(this);
         Users user = new Users(
@@ -142,23 +225,86 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(() -> {
                     // succes de l'insertion
                     MainActivity.this.runOnUiThread(() -> {
-                        Toast.makeText(this, "Ajout avec succes", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
                         Log.d(TAG,"Ajouté : "+user);
                     });
                 }, throwable -> {
                     // en cas d'erreur
                     runOnUiThread(() -> {
-                        Toast.makeText(this, "Erreur lors de l'ajout", Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "Erreur lors de l'insertion", throwable);
+                        Toast.makeText(this, "Error while registering your information", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error on insert", throwable);
                     });
                 });
+        // user association to the answer given
+        registerAnswers(view, user.getUid());
     }
 
-    public void registerAnswers(View view){
+    public void registerAnswers(View view, int userId){
+        AppDatabase db = AppDatabase.getDatabase(this);
+
+        // collect answers
+        float dFrequency = dreamFrequency.getProgress();
+        float dDetails = dreamDetails.getRating();
+        float dLucid = 0.f;
+
+        if(sNever.isChecked()) dLucid += 1.f;
+        else if(sRarely.isChecked())dLucid += 2.f;
+        else if(sSometime.isChecked()) dLucid += 3.f;
+        else if(sOften.isChecked()) dLucid += 4.f;
+
+        float tFamilly = 0.f;
+        float tLove = 0.f;
+        float tWork = 0.f;
+        float tFall = 0.f;
+
+        if(rbFamillyN.isChecked()) tFamilly = 1.0f;
+        else if(rbFamillyR.isChecked()) tFamilly = 2.0f;
+        else if(rbFamillyO.isChecked()) tFamilly = 3.0f;
+        else if(rbFamillyS.isChecked()) tFamilly = 4.0f;
+
+        if(rbLoveN.isChecked()) tLove = 1.0f;
+        else if(rbLoveR.isChecked()) tLove = 2.0f;
+        else if(rbLoveO.isChecked()) tLove = 3.0f;
+        else if(rbLoveS.isChecked()) tLove = 4.0f;
+
+        if(rbWorkN.isChecked()) tWork = 1.0f;
+        else if(rbWorkR.isChecked()) tWork = 2.0f;
+        else if(rbWorkO.isChecked()) tWork = 3.0f;
+        else if(rbWorkS.isChecked()) tWork = 4.0f;
+
+        if(rbFallN.isChecked()) tFall = 1.0f;
+        else if(rbFallR.isChecked()) tFall = 2.0f;
+        else if(rbFallO.isChecked()) tFall = 3.0f;
+        else if(rbFallS.isChecked()) tFall = 4.0f;
+
+
+        // TODO : finir la récolte de réponse
+        Answers answer = new Answers(userId,dFrequency,dDetails,dLucid,tFamilly,tLove,tWork,tFall,1,1,1,1,1,1,1,"test");
+
+        Completable c = db.answersDAO().insertAllAsync(answer);
+
+        Disposable disposable = c.subscribeOn(Schedulers.io())
+                .subscribe(() -> {
+                    // succes de l'insertion
+                    MainActivity.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Answer registered", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG,"Added : "+answer);
+                    });
+                }, throwable -> {
+                    // en cas d'erreur
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Error while registering your answers", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error on insert", throwable);
+                    });
+                });
 
     }
 
     public void evaluateAnswers(View view){
         addUser(view);
+    }
+
+    public void testing(View view){
+        Log.d(TAG,"Etoiles :"+dreamDetails.getNumStars());
     }
 }
