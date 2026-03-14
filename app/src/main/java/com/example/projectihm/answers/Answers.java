@@ -3,16 +3,24 @@ package com.example.projectihm.answers;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
+import com.example.projectihm.users.Users;
 
 /***
  * This table is used to store all answer a user will give while
  * filling the form
  */
-@Entity(tableName = "answers")
+@Entity(tableName = "answers",
+        foreignKeys = @ForeignKey(entity = Users.class, parentColumns = "uid", childColumns = "user_id", onDelete = ForeignKey.CASCADE),
+        indices = @Index(value = "user_id"))
 public class Answers {
     @PrimaryKey(autoGenerate = true)
     int uid;
+    @ColumnInfo(name = "user_id")
+    int userId;
 
     @ColumnInfo(name = "dream_frequency")
     int dreamFrequency;
@@ -59,11 +67,12 @@ public class Answers {
     @ColumnInfo(name = "emotion_opinion")
     String emotionOpinion;
 
-    public Answers(int dreamFrequency, int dreamDetails, int lucidDream,
+    public Answers(int userId, int dreamFrequency, int dreamDetails, int lucidDream,
                    int topicFamily, int topicLove, int topicWork, int topicFall,
                    int emotionJoy, int emotionConfusion, int emotionSerenity, int emotionFear,
                    int emotionStress, int emotionSadness, int emotionAnger, @NonNull String emotionOpinion)
     {
+        this.userId = userId;
         this.dreamFrequency = dreamFrequency;
         this.dreamDetails = dreamDetails;
         this.lucidDream = lucidDream;
