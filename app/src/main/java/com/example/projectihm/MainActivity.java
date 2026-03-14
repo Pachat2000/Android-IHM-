@@ -1,14 +1,17 @@
 package com.example.projectihm;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,11 +19,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projectihm.dbmanager.AppDatabase;
+import com.example.projectihm.users.Users;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
+
+    private EditText userFirstName;
+    private EditText userLastName;
+    private EditText userEmailAdress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         setupAction(header3, body3, arrow3);
         setupAction(header4, body4, arrow4);
         setupSpinner(spinner);
+
+        userFirstName = findViewById(R.id.editName);
+        userLastName = findViewById(R.id.editLastName);
+        userEmailAdress = findViewById(R.id.editEmail);
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){
@@ -108,5 +126,39 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    public void addUser(View view){
+        AppDatabase db = AppDatabase.getDatabase(this);
+        Users user = new Users(
+                userFirstName.getText().toString(),
+                userLastName.getText().toString(),
+                userEmailAdress.getText().toString()
+        );
+
+        Completable c = db.usersDAO().insertAllAsync(user);
+
+        Disposable disposable = c.subscribeOn(Schedulers.io())
+                .subscribe(() -> {
+                    // succes de l'insertion
+                    MainActivity.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Ajout avec succes", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG,"Ajouté : "+user);
+                    });
+                }, throwable -> {
+                    // en cas d'erreur
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Erreur lors de l'ajout", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Erreur lors de l'insertion", throwable);
+                    });
+                });
+    }
+
+    public void registerAnswers(View view){
+
+    }
+
+    public void evaluateAnswers(View view){
+        addUser(view);
     }
 }

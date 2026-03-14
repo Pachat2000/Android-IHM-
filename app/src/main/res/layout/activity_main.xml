@@ -82,7 +82,7 @@
                     android:layout_height="match_parent"
                     android:baselineAligned="false"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:id="@+id/bodyHori1"
@@ -747,6 +747,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:onClick="addUser"
         android:text="@string/result"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
