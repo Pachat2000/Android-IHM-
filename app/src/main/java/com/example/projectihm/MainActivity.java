@@ -1,16 +1,15 @@
 package com.example.projectihm;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -27,13 +26,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.projectihm.answers.Answers;
 import com.example.projectihm.dbmanager.AppDatabase;
 import com.example.projectihm.users.Users;
+import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -72,7 +71,17 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton rbFallR;
     private RadioButton rbFallS;
 
+    private Chip cJoy;
+    private Chip cConfusion;
+    private Chip cSerenity;
+    private Chip cFear;
+    private Chip cStress;
+    private Chip cSadness;
+    private Chip cAnger;
+    private Spinner sOpinion;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout body4 = findViewById(R.id.body_section4);
         ImageView arrow4 = findViewById(R.id.ImgArrowSectionUp3);
 
-        Spinner spinner = findViewById(R.id.spinner);
+        sOpinion = findViewById(R.id.spinnerOpinion);
 
 
 
@@ -116,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupAction(header3, body3, arrow3);
         setupAction(header4, body4, arrow4);
-        setupSpinner(spinner);
+        setupSpinner(sOpinion);
 
         userFirstName = findViewById(R.id.editName);
         userLastName = findViewById(R.id.editLastName);
@@ -152,6 +161,14 @@ public class MainActivity extends AppCompatActivity {
         rbFallO = findViewById(R.id.rbFallOften);
         rbFallR = findViewById(R.id.rbFallRarely);
         rbFallS = findViewById(R.id.rbFallSometime);
+
+        cJoy = findViewById(R.id.chipJoy);
+        cConfusion = findViewById(R.id.chipConfusion);
+        cSerenity = findViewById(R.id.chipSerenity);
+        cFear = findViewById(R.id.chipFear);
+        cStress = findViewById(R.id.chipStress);
+        cSadness = findViewById(R.id.chipSadness);
+        cAnger = findViewById(R.id.chipAnger);
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){
@@ -219,24 +236,24 @@ public class MainActivity extends AppCompatActivity {
                 userEmailAdress.getText().toString()
         );
 
-        Completable c = db.usersDAO().insertAllAsync(user);
+        Single<Long> c = db.usersDAO().insertUserAsync(user);
 
         Disposable disposable = c.subscribeOn(Schedulers.io())
-                .subscribe(() -> {
+                .subscribe((userId) -> {
                     // succes de l'insertion
                     MainActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
                         Log.d(TAG,"Ajouté : "+user);
                     });
+                    // user association to the answer given, only if user created
+                    registerAnswers(view, userId.intValue());
                 }, throwable -> {
                     // en cas d'erreur
                     runOnUiThread(() -> {
                         Toast.makeText(this, "Error while registering your information", Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "Error on insert", throwable);
+                        Log.e(TAG, "Error on insert in users", throwable);
                     });
                 });
-        // user association to the answer given
-        registerAnswers(view, user.getUid());
     }
 
     public void registerAnswers(View view, int userId){
@@ -278,8 +295,15 @@ public class MainActivity extends AppCompatActivity {
         else if(rbFallS.isChecked()) tFall = 4.0f;
 
 
-        // TODO : finir la récolte de réponse
-        Answers answer = new Answers(userId,dFrequency,dDetails,dLucid,tFamilly,tLove,tWork,tFall,1,1,1,1,1,1,1,"test");
+        Answers answer = new Answers(userId,dFrequency,dDetails,dLucid,tFamilly,tLove,tWork,tFall,
+                cJoy.isChecked() ? 2.f : 1.f,
+                cConfusion.isChecked() ? 2.f : 1.f,
+                cSerenity.isChecked() ? 2.f : 1.f,
+                cFear.isChecked() ? 2.f : 1.f,
+                cStress.isChecked() ? 2.f : 1.f,
+                cStress.isChecked() ? 2.f : 1.f,
+                cAnger.isChecked() ? 2.f : 1.f,
+                sOpinion.getSelectedItem().toString());
 
         Completable c = db.answersDAO().insertAllAsync(answer);
 
@@ -294,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
                     // en cas d'erreur
                     runOnUiThread(() -> {
                         Toast.makeText(this, "Error while registering your answers", Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "Error on insert", throwable);
+                        Log.e(TAG, "Error on insert in answers", throwable);
                     });
                 });
 

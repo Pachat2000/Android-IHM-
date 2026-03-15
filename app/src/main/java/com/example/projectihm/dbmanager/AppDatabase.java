@@ -11,7 +11,7 @@ import com.example.projectihm.answers.AnswersDAO;
 import com.example.projectihm.users.Users;
 import com.example.projectihm.users.UsersDAO;
 
-@Database(entities = {Users.class, Answers.class}, version = 1, exportSchema = false)
+@Database(entities = {Users.class, Answers.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UsersDAO usersDAO();
 
@@ -22,7 +22,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static synchronized AppDatabase getDatabase(Context context) {
         Context appcontext = context.getApplicationContext();
         if(INSTANCE == null || !INSTANCE.isOpen())
-            INSTANCE = Room.databaseBuilder(appcontext, AppDatabase.class , "dreamform.db").build();
+            INSTANCE = Room.databaseBuilder(appcontext, AppDatabase.class , "dreamform.db").fallbackToDestructiveMigration().build();
         return INSTANCE;
     }
 

@@ -354,7 +354,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/lblQuestion7"
@@ -689,42 +689,49 @@
                             android:id="@+id/chipJoy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checkable="true"
                             android:text="@string/joy" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipConfusion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checkable="true"
                             android:text="@string/confusion" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipSerenity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checkable="true"
                             android:text="@string/serenity" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipFear"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checkable="true"
                             android:text="@string/fear" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipStress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checkable="true"
                             android:text="@string/stress" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipSadness"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checkable="true"
                             android:text="@string/sadness" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipAnger"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:checkable="true"
                             android:text="@string/anger" />
                     </com.google.android.material.chip.ChipGroup>
 
@@ -735,7 +742,7 @@
                         android:text="@string/in_your_opinion_your_dreams_are_mainly" />
 
                     <Spinner
-                        android:id="@+id/spinner"
+                        android:id="@+id/spinnerOpinion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp" />
@@ -751,6 +758,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:onClick="addUser"
         android:text="@string/result"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

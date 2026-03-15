@@ -129,6 +129,7 @@ public class Answers {
     public String toString() {
         return "Answer{" +
                 "uid=" + uid +
+                ", user_id='" + userId + '\'' +
                 ", dreamFrequency='" + dreamFrequency + '\'' +
                 ", dreamDetails='" + dreamDetails + '\'' +
                 ", lucidDream ='" + lucidDream +'\'' +

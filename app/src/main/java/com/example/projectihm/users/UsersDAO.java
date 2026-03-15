@@ -58,6 +58,10 @@ public interface UsersDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAllAsync(Users... users);
 
+    // getting new user id to give it to the answers table
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    Single<Long> insertUserAsync(Users user);
+
 
     /**
      * Delete a user from the database
