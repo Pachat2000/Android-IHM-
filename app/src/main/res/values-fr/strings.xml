@@ -40,4 +40,7 @@
     <string name="listitem2">Le reflet de mes désirs</string>
     <string name="listitem3">Symboliques</string>
     <string name="listitem4">Inspirés de ma vie quotidienne</string>
+    <string name="credits">Crédits</string>
+    <string name="start">Commencer</string>
+    <string name="nigth_sky_background">"fond nuit étoilé "</string>
 </resources>

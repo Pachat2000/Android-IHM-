@@ -5,8 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgvBackGround"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/nigth_sky_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/night_sky" />
 
     <TextView
         android:id="@+id/lblTitle"
@@ -17,6 +28,7 @@
         android:layout_marginEnd="32dp"
         android:text="@string/what_kind_of_dreamer_are_you"
         android:textAlignment="center"
+        android:textColor="#F5F5F5"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,8 +58,6 @@
                 android:id="@+id/container_section1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFFFFF"
-                android:backgroundTint="#FFFFFF"
                 android:orientation="vertical"
                 android:visibility="visible">
 
@@ -55,7 +65,7 @@
                     android:id="@+id/header_section1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#95231E1E"
+                    android:background="#142331"
                     android:orientation="horizontal">
 
                     <TextView
@@ -64,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9"
                         android:text="@string/i_user_information"
-                        android:textColor="#000000" />
+                        android:textColor="#D7CCC8" />
 
                     <ImageView
                         android:id="@+id/ImgArrowSectionUp"
@@ -82,7 +92,7 @@
                     android:layout_height="match_parent"
                     android:baselineAligned="false"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:id="@+id/bodyHori1"
@@ -103,7 +113,9 @@
                                 android:id="@+id/lblName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/name_lbl" />
+                                android:text="@string/name_lbl"
+                                android:textColor="#F5F5F5"
+                                android:textColorHighlight="#F5F5F5" />
 
                             <EditText
                                 android:id="@+id/editName"
@@ -114,7 +126,10 @@
                                 android:hint="@string/name"
                                 android:inputType="text"
                                 android:minHeight="48dp"
-                                android:textColorHint="#757575" />
+                                android:textColor="#F5F5F5"
+                                android:textColorHighlight="#F5F5F5"
+                                android:textColorHint="#F5F5F5"
+                                android:textColorLink="#F5F5F5" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -128,7 +143,8 @@
                                 android:id="@+id/lblLastName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/lastname_lbl" />
+                                android:text="@string/lastname_lbl"
+                                android:textColor="#F5F5F5" />
 
                             <EditText
                                 android:id="@+id/editLastName"
@@ -140,7 +156,11 @@
                                 android:hint="@string/lastname"
                                 android:inputType="text"
                                 android:minHeight="48dp"
-                                android:textColorHint="#757575" />
+                                android:shadowColor="#F5F5F5"
+                                android:textColor="#F5F5F5"
+                                android:textColorHighlight="#F5F5F5"
+                                android:textColorHint="#F5F5F5"
+                                android:textColorLink="#F5F5F5" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -151,7 +171,8 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:baselineAligned="false"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="visible">
 
                         <LinearLayout
                             android:id="@+id/itemQuestion3"
@@ -163,7 +184,11 @@
                                 android:id="@+id/lblEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/email_lbl" />
+                                android:text="@string/email_lbl"
+                                android:textColor="#F5F5F5"
+                                android:textColorHighlight="#F5F5F5"
+                                android:textColorHint="#F5F5F5"
+                                android:textColorLink="#F5F5F5" />
 
                             <EditText
                                 android:id="@+id/editEmail"
@@ -171,9 +196,18 @@
                                 android:layout_height="wrap_content"
                                 android:autofillHints="@string/email"
                                 android:ems="10"
+                                android:focusedSearchResultHighlightColor="#F5F5F5"
                                 android:hint="@string/email"
                                 android:inputType="textEmailAddress"
-                                android:minHeight="48dp" />
+                                android:minHeight="48dp"
+                                android:outlineAmbientShadowColor="#F5F5F5"
+                                android:outlineSpotShadowColor="#F5F5F5"
+                                android:searchResultHighlightColor="#F5F5F5"
+                                android:shadowColor="#F5F5F5"
+                                android:textColor="#F5F5F5"
+                                android:textColorHighlight="#F5F5F5"
+                                android:textColorHint="#F5F5F5"
+                                android:textColorLink="#F5F5F5" />
 
                         </LinearLayout>
 
@@ -198,7 +232,7 @@
                     android:id="@+id/header_section2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#646363"
+                    android:background="#152533"
                     android:orientation="horizontal">
 
                     <TextView
@@ -230,12 +264,14 @@
                         android:id="@+id/lblQuestion4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/how_often_do_you_have_dreams" />
+                        android:text="@string/how_often_do_you_have_dreams"
+                        android:textColor="#F5F5F5" />
 
                     <TextView
                         android:id="@+id/lblSeekbarTracker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="#F5F5F5"
                         android:translationX="10dp" />
 
                     <SeekBar
@@ -245,25 +281,29 @@
                         android:layout_height="wrap_content"
                         android:max="10"
                         android:maxWidth="5dp"
-                        android:progressTint="#562525" />
+                        android:progressTint="#F5F5F5" />
 
                     <TextView
                         android:id="@+id/lblQuestion5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/how_detailed_are_your_dreams" />
+                        android:text="@string/how_detailed_are_your_dreams"
+                        android:textColor="#F5F5F5" />
 
                     <RatingBar
                         android:id="@+id/ratingBar3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:outlineAmbientShadowColor="#F5F5F5"
+                        android:outlineSpotShadowColor="#F5F5F5" />
 
                     <TextView
                         android:id="@+id/lblQuestion6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/do_you_ever_have_lucid_dreams" />
+                        android:text="@string/do_you_ever_have_lucid_dreams"
+                        android:textColor="#F5F5F5" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -282,14 +322,16 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:minHeight="48dp"
-                                android:text="@string/often" />
+                                android:text="@string/often"
+                                android:textColor="#F5F5F5" />
 
                             <Switch
                                 android:id="@+id/swtAnswerSometime"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:minHeight="48dp"
-                                android:text="@string/sometimes" />
+                                android:text="@string/sometimes"
+                                android:textColor="#F5F5F5" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -303,14 +345,16 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:minHeight="48dp"
-                                android:text="@string/rarely" />
+                                android:text="@string/rarely"
+                                android:textColor="#F5F5F5" />
 
                             <Switch
                                 android:id="@+id/swtAnswerNever"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:minHeight="48dp"
-                                android:text="@string/never" />
+                                android:text="@string/never"
+                                android:textColor="#F5F5F5" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -329,7 +373,7 @@
                     android:id="@+id/header_section3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#943B3B"
+                    android:background="#2E5271"
                     android:orientation="horizontal">
 
                     <TextView
@@ -361,13 +405,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/which_topics_come_up_most_often" />
+                        android:text="@string/which_topics_come_up_most_often"
+                        android:textColor="#F5F5F5" />
 
                     <LinearLayout
                         android:id="@+id/bodyHoriLbl"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#A9EBE1E1"
                         android:orientation="horizontal">
 
                         <TextView
@@ -381,32 +425,32 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
-                            android:text="@string/often" />
+                            android:text="@string/often"
+                            android:textColor="#F5F5F5" />
 
                         <TextView
                             android:id="@+id/lblSometime"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
-                            android:text="@string/sometimes" />
+                            android:text="@string/sometimes"
+                            android:textColor="#F5F5F5" />
 
                         <TextView
                             android:id="@+id/lblRarely"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
-                            android:text="@string/rarely" />
+                            android:text="@string/rarely"
+                            android:textColor="#F5F5F5" />
 
                         <TextView
                             android:id="@+id/lblNever"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
-                            android:text="@string/never" />
+                            android:text="@string/never"
+                            android:textColor="#F5F5F5" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -420,10 +464,10 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
                             android:paddingTop="12dp"
                             android:text="@string/family"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="#F5F5F5" />
 
                         <RadioGroup
                             android:id="@+id/RGFamily"
@@ -436,7 +480,11 @@
                                 android:id="@+id/rbFamilyOften"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:textColor="#F5F5F5"
+                                android:textColorHighlight="#F5F5F5"
+                                android:textColorHint="#F5F5F5"
+                                android:textColorLink="#F5F5F5" />
 
                             <RadioButton
                                 android:id="@+id/rbFamilySometime"
@@ -469,10 +517,10 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
                             android:paddingTop="12dp"
                             android:text="@string/love"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="#F5F5F5" />
 
                         <RadioGroup
                             android:id="@+id/RGLove"
@@ -519,10 +567,10 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
                             android:paddingTop="12dp"
                             android:text="@string/work"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="#F5F5F5" />
 
                         <RadioGroup
                             android:id="@+id/RGWork"
@@ -578,10 +626,10 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#A9EBE1E1"
                             android:paddingTop="12dp"
                             android:text="@string/fall"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="#F5F5F5" />
 
                         <RadioGroup
                             android:id="@+id/RGFall"
@@ -648,7 +696,7 @@
                     android:id="@+id/header_section4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#79477C"
+                    android:background="#39668E"
                     android:orientation="horizontal">
 
                     <TextView
@@ -657,7 +705,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9.5"
                         android:text="@string/iv_emotions"
-                        android:textColor="#80DEEA" />
+                        android:textColor="#D7CCC8" />
 
                     <ImageView
                         android:id="@+id/ImgArrowSectionUp3"
@@ -679,7 +727,8 @@
                         android:id="@+id/lblQuestion9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/what_emotion_dominates_most_often_in_your_dreams" />
+                        android:text="@string/what_emotion_dominates_most_often_in_your_dreams"
+                        android:textColor="#F5F5F5" />
 
                     <com.google.android.material.chip.ChipGroup
                         android:layout_width="match_parent"
@@ -739,7 +788,8 @@
                         android:id="@+id/lblQuestion10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/in_your_opinion_your_dreams_are_mainly" />
+                        android:text="@string/in_your_opinion_your_dreams_are_mainly"
+                        android:textColor="#F5F5F5" />
 
                     <Spinner
                         android:id="@+id/spinnerOpinion"
