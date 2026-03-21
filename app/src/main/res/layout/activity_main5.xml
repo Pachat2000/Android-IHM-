@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity5">
+
+    <ImageView
+        android:id="@+id/nightSkyImg5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/nigth_sky_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/nighth_sky" />
+
+    <TextView
+        android:id="@+id/lblMainMenu5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/what_kind_of_dreamer_are_you"
+        android:textColor="#CAC3C3"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/finishLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/almost_done"
+        android:textColor="#CAC3C3"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu5" />
+
+    <TextView
+        android:id="@+id/lastQuestionLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/did_you_enjoy_this_test"
+        android:textColor="#CAC3C3"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finishLbl" />
+
+    <ImageView
+        android:id="@+id/HappyImg"
+        android:layout_width="wrap_content"
+        android:layout_height="177dp"
+        android:contentDescription="@string/happy_smile"
+        app:layout_constraintBottom_toTopOf="@+id/resultBttn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastQuestionLbl"
+        app:srcCompat="@drawable/smile" />
+
+    <ImageView
+        android:id="@+id/SadLbl"
+        android:layout_width="159dp"
+        android:layout_height="182dp"
+        android:layout_marginStart="32dp"
+        android:contentDescription="@string/sad_smile"
+        app:layout_constraintBottom_toTopOf="@+id/resultBttn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/HappyImg"
+        app:layout_constraintTop_toBottomOf="@+id/lastQuestionLbl"
+        app:srcCompat="@drawable/sad_face_emoji" />
+
+    <Button
+        android:id="@+id/resultBttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/result"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

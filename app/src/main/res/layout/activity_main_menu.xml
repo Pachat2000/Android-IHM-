@@ -18,41 +18,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth="match_parent"
-        app:srcCompat="@drawable/night_sky" />
+        app:srcCompat="@drawable/nighth_sky" />
 
     <Button
         android:id="@+id/startActivityBtt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="128dp"
         android:text="@string/start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu" />
+        app:layout_constraintBottom_toTopOf="@+id/ResultBtt"
+        app:layout_constraintEnd_toEndOf="@+id/lblMainMenu"
+        app:layout_constraintStart_toStartOf="@+id/lblMainMenu"
+        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu"
+        app:layout_constraintVertical_bias="0.13" />
 
     <TextView
         android:id="@+id/lblMainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="250dp"
         android:layout_marginEnd="32dp"
         android:text="@string/what_kind_of_dreamer_are_you"
         android:textColor="#CAC3C3"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
         android:id="@+id/ResultBtt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/result"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startActivityBtt" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

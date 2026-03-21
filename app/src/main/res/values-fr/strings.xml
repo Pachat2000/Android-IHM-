@@ -43,4 +43,24 @@
     <string name="credits">Crédits</string>
     <string name="start">Commencer</string>
     <string name="nigth_sky_background">"fond nuit étoilé "</string>
+    <string name="joy_or_excitement">Joie ou excitation</string>
+    <string name="fear_or_anxiety">Peur ou anxiété</string>
+    <string name="which_of_the_following_emotions_did_you_experience_during_your_dream">Parmi les émotions suivantes, laquelle avez-vous ressentie pendant votre rêve ?</string>
+    <string name="next">Suivant</string>
+    <string name="v_the_escape_of_dreams">V.La fuite des rêves</string>
+    <string name="extreme_confusion">Confusion extrême</string>
+    <string name="terrible_sadness">Une immense tristesse</string>
+    <string name="endless_bag_of_candy">Un sac de bonbons sans fond</string>
+    <string name="the_clown_it">Le clown ça</string>
+    <string name="a_fight_between_all_your_exes">Une bagarre entre tous tes ex</string>
+    <string name="which_of_the_following_would_you_create_in_a_lucid_dream">Parmi les éléments suivants, lequel créeriez-vous dans un rêve lucide ?</string>
+    <string name="money_hehehe">De l\'argent hehehe</string>
+    <string name="big_teddy_bear">Un grand ours en peluche</string>
+    <string name="frustration">Frustration</string>
+    <string name="what_emotion_stands_out_most_in_your_dreams">Quelle sentiment ressort le plus de vos rêves ?</string>
+    <string name="work_paper">Document de travail</string>
+    <string name="almost_done">C\'est presque fini !</string>
+    <string name="did_you_enjoy_this_test">Ce test t\'a-t-il plu ?</string>
+    <string name="happy_smile">Un sourire radieux</string>
+    <string name="sad_smile">Sourire triste</string>
 </resources>

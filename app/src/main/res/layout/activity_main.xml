@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imgvBackGround"
+        android:id="@+id/nightSkyImg"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/nigth_sky_background"
@@ -17,14 +17,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/night_sky" />
+        app:srcCompat="@drawable/nighth_sky" />
 
     <TextView
         android:id="@+id/lblTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="@string/what_kind_of_dreamer_are_you"
         android:textAlignment="center"
@@ -34,784 +34,191 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="332dp"
-        android:layout_height="514dp"
+    <LinearLayout
+        android:id="@+id/container_section1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:contentDescription="@string/app_name"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/nextBttn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblTitle">
+        app:layout_constraintTop_toBottomOf="@+id/lblTitle"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
-            android:id="@+id/container"
+            android:id="@+id/header_section1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
+            android:layout_height="match_parent"
+            android:background="#142331"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblInfoPero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:text="@string/i_user_information"
+                android:textColor="#D7CCC8" />
+
+            <ImageView
+                android:id="@+id/ImgArrowSectionUp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/arrow_that_show_the_content_of_this_section"
+                android:rotation="181"
+                app:srcCompat="@android:drawable/arrow_up_float" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/body_section1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
             android:orientation="vertical"
             android:visibility="visible">
 
             <LinearLayout
-                android:id="@+id/container_section1"
+                android:id="@+id/bodyHori1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="16dp">
+
+                <LinearLayout
+                    android:id="@+id/itemQuestion1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lblName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name_lbl"
+                        android:textColor="#F5F5F5"
+                        android:textColorHighlight="#F5F5F5" />
+
+                    <EditText
+                        android:id="@+id/editName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:ems="10"
+                        android:hint="@string/name"
+                        android:inputType="text"
+                        android:minHeight="48dp"
+                        android:textColor="#F5F5F5"
+                        android:textColorHighlight="#F5F5F5"
+                        android:textColorHint="#F5F5F5"
+                        android:textColorLink="#F5F5F5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/itemQuestion2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lblLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lastname_lbl"
+                        android:textColor="#F5F5F5" />
+
+                    <EditText
+                        android:id="@+id/editLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:baselineAligned="false"
+                        android:ems="10"
+                        android:hint="@string/lastname"
+                        android:inputType="text"
+                        android:minHeight="48dp"
+                        android:shadowColor="#F5F5F5"
+                        android:textColor="#F5F5F5"
+                        android:textColorHighlight="#F5F5F5"
+                        android:textColorHint="#F5F5F5"
+                        android:textColorLink="#F5F5F5" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bodyHori2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
                 android:visibility="visible">
 
                 <LinearLayout
-                    android:id="@+id/header_section1"
+                    android:id="@+id/itemQuestion3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#142331"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/lblInfoPero"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="9"
-                        android:text="@string/i_user_information"
-                        android:textColor="#D7CCC8" />
-
-                    <ImageView
-                        android:id="@+id/ImgArrowSectionUp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_that_show_the_content_of_this_section"
-                        app:srcCompat="@android:drawable/arrow_up_float" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/body_section1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:baselineAligned="false"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <LinearLayout
-                        android:id="@+id/bodyHori1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal"
-                        android:paddingTop="16dp">
-
-                        <LinearLayout
-                            android:id="@+id/itemQuestion1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/lblName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/name_lbl"
-                                android:textColor="#F5F5F5"
-                                android:textColorHighlight="#F5F5F5" />
-
-                            <EditText
-                                android:id="@+id/editName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:autofillHints=""
-                                android:ems="10"
-                                android:hint="@string/name"
-                                android:inputType="text"
-                                android:minHeight="48dp"
-                                android:textColor="#F5F5F5"
-                                android:textColorHighlight="#F5F5F5"
-                                android:textColorHint="#F5F5F5"
-                                android:textColorLink="#F5F5F5" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/itemQuestion2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/lblLastName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/lastname_lbl"
-                                android:textColor="#F5F5F5" />
-
-                            <EditText
-                                android:id="@+id/editLastName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:autofillHints=""
-                                android:baselineAligned="false"
-                                android:ems="10"
-                                android:hint="@string/lastname"
-                                android:inputType="text"
-                                android:minHeight="48dp"
-                                android:shadowColor="#F5F5F5"
-                                android:textColor="#F5F5F5"
-                                android:textColorHighlight="#F5F5F5"
-                                android:textColorHint="#F5F5F5"
-                                android:textColorLink="#F5F5F5" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/bodyHori2"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal"
-                        android:visibility="visible">
-
-                        <LinearLayout
-                            android:id="@+id/itemQuestion3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/lblEmail"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/email_lbl"
-                                android:textColor="#F5F5F5"
-                                android:textColorHighlight="#F5F5F5"
-                                android:textColorHint="#F5F5F5"
-                                android:textColorLink="#F5F5F5" />
-
-                            <EditText
-                                android:id="@+id/editEmail"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:autofillHints="@string/email"
-                                android:ems="10"
-                                android:focusedSearchResultHighlightColor="#F5F5F5"
-                                android:hint="@string/email"
-                                android:inputType="textEmailAddress"
-                                android:minHeight="48dp"
-                                android:outlineAmbientShadowColor="#F5F5F5"
-                                android:outlineSpotShadowColor="#F5F5F5"
-                                android:searchResultHighlightColor="#F5F5F5"
-                                android:shadowColor="#F5F5F5"
-                                android:textColor="#F5F5F5"
-                                android:textColorHighlight="#F5F5F5"
-                                android:textColorHint="#F5F5F5"
-                                android:textColorLink="#F5F5F5" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/Space"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"></LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/container_section2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/header_section2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#152533"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lblMemoryDream"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="8"
-                        android:text="@string/ii_memories_of_dreams"
-                        android:textColor="#E0E0E0" />
-
-                    <ImageView
-                        android:id="@+id/ImgArrowSectionUp2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_that_show_the_content_of_this_section"
-                        app:srcCompat="@android:drawable/arrow_up_float" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/body_section2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingTop="16dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/lblQuestion4"
+                        android:id="@+id/lblEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/how_often_do_you_have_dreams"
-                        android:textColor="#F5F5F5" />
-
-                    <TextView
-                        android:id="@+id/lblSeekbarTracker"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:text="@string/email_lbl"
                         android:textColor="#F5F5F5"
-                        android:translationX="10dp" />
+                        android:textColorHighlight="#F5F5F5"
+                        android:textColorHint="#F5F5F5"
+                        android:textColorLink="#F5F5F5" />
 
-                    <SeekBar
-                        android:id="@+id/lblSeekBar"
-                        style="@android:style/Widget.Material.Light.SeekBar"
+                    <EditText
+                        android:id="@+id/editEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:max="10"
-                        android:maxWidth="5dp"
-                        android:progressTint="#F5F5F5" />
-
-                    <TextView
-                        android:id="@+id/lblQuestion5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/how_detailed_are_your_dreams"
-                        android:textColor="#F5F5F5" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:numStars="5"
+                        android:autofillHints="@string/email"
+                        android:ems="10"
+                        android:focusedSearchResultHighlightColor="#F5F5F5"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
                         android:outlineAmbientShadowColor="#F5F5F5"
-                        android:outlineSpotShadowColor="#F5F5F5" />
+                        android:outlineSpotShadowColor="#F5F5F5"
+                        android:searchResultHighlightColor="#F5F5F5"
+                        android:shadowColor="#F5F5F5"
+                        android:textColor="#F5F5F5"
+                        android:textColorHighlight="#F5F5F5"
+                        android:textColorHint="#F5F5F5"
+                        android:textColorLink="#F5F5F5" />
 
-                    <TextView
-                        android:id="@+id/lblQuestion6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/do_you_ever_have_lucid_dreams"
-                        android:textColor="#F5F5F5" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <Switch
-                                android:id="@+id/swtAnswerOften"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:minHeight="48dp"
-                                android:text="@string/often"
-                                android:textColor="#F5F5F5" />
-
-                            <Switch
-                                android:id="@+id/swtAnswerSometime"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:minHeight="48dp"
-                                android:text="@string/sometimes"
-                                android:textColor="#F5F5F5" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <Switch
-                                android:id="@+id/swtAnswerRarely"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:minHeight="48dp"
-                                android:text="@string/rarely"
-                                android:textColor="#F5F5F5" />
-
-                            <Switch
-                                android:id="@+id/swtAnswerNever"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:minHeight="48dp"
-                                android:text="@string/never"
-                                android:textColor="#F5F5F5" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/container_section3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/header_section3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2E5271"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lblDreamContent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="9"
-                        android:text="@string/iii_dream_content"
-                        android:textColor="#D7CCC8" />
-
-                    <ImageView
-                        android:id="@+id/imgArrowSection3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_that_show_the_content_of_this_section"
-                        app:srcCompat="@android:drawable/arrow_up_float" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/body_section3"
+                    android:id="@+id/Space"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    android:orientation="vertical"></LinearLayout>
 
-                    <TextView
-                        android:id="@+id/lblQuestion7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/which_topics_come_up_most_often"
-                        android:textColor="#F5F5F5" />
-
-                    <LinearLayout
-                        android:id="@+id/bodyHoriLbl"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/lblSpace"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:id="@+id/lblOften"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/often"
-                            android:textColor="#F5F5F5" />
-
-                        <TextView
-                            android:id="@+id/lblSometime"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/sometimes"
-                            android:textColor="#F5F5F5" />
-
-                        <TextView
-                            android:id="@+id/lblRarely"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/rarely"
-                            android:textColor="#F5F5F5" />
-
-                        <TextView
-                            android:id="@+id/lblNever"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/never"
-                            android:textColor="#F5F5F5" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/bodyHoriFamily"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/lblFamily"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:paddingTop="12dp"
-                            android:text="@string/family"
-                            android:textAlignment="center"
-                            android:textColor="#F5F5F5" />
-
-                        <RadioGroup
-                            android:id="@+id/RGFamily"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rbFamilyOften"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="#F5F5F5"
-                                android:textColorHighlight="#F5F5F5"
-                                android:textColorHint="#F5F5F5"
-                                android:textColorLink="#F5F5F5" />
-
-                            <RadioButton
-                                android:id="@+id/rbFamilySometime"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/rbFamilyRarely"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/rbFamilyNever"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-                        </RadioGroup>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/bodyHoriLove"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/lblLove"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:paddingTop="12dp"
-                            android:text="@string/love"
-                            android:textAlignment="center"
-                            android:textColor="#F5F5F5" />
-
-                        <RadioGroup
-                            android:id="@+id/RGLove"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:baselineAligned="false"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rbLoveOften"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/rbLoveSometime"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/rbLoveRarely"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/rbLoveNever"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-                        </RadioGroup>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/bodyHoriWork"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/lblWork"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:paddingTop="12dp"
-                            android:text="@string/work"
-                            android:textAlignment="center"
-                            android:textColor="#F5F5F5" />
-
-                        <RadioGroup
-                            android:id="@+id/RGWork"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:minWidth="48dp"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rbWorkOften"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:maxWidth="48dp"
-                                android:minHeight="48dp" />
-
-                            <RadioButton
-                                android:id="@+id/rbWorkSometime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:maxWidth="48dp"
-                                android:minHeight="48dp" />
-
-                            <RadioButton
-                                android:id="@+id/rbWorkRarely"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:maxWidth="48dp"
-                                android:minHeight="48dp" />
-
-                            <RadioButton
-                                android:id="@+id/rbWorkNever"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:maxWidth="48dp"
-                                android:minHeight="48dp" />
-                        </RadioGroup>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/bodyHoriFall"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/lblFall"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:paddingTop="12dp"
-                            android:text="@string/fall"
-                            android:textAlignment="center"
-                            android:textColor="#F5F5F5" />
-
-                        <RadioGroup
-                            android:id="@+id/RGFall"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:minWidth="48dp"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/rbFallOften"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:width="48dp"
-                                android:maxWidth="48dp"
-                                android:minWidth="48dp"
-                                android:minHeight="48dp" />
-
-                            <RadioButton
-                                android:id="@+id/rbFallSometime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:width="48dp"
-                                android:maxWidth="48dp"
-                                android:minWidth="48dp"
-                                android:minHeight="48dp" />
-
-                            <RadioButton
-                                android:id="@+id/rbFallRarely"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:width="48dp"
-                                android:maxWidth="48dp"
-                                android:minWidth="48dp"
-                                android:minHeight="48dp" />
-
-                            <RadioButton
-                                android:id="@+id/rbFallNever"
-                                android:layout_width="wrap_content"
-                                android:layout_height="48dp"
-                                android:layout_weight="1"
-                                android:width="48dp"
-                                android:maxWidth="48dp"
-                                android:minWidth="48dp"
-                                android:minHeight="48dp" />
-                        </RadioGroup>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/container_section4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/header_section4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#39668E"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/lblEmotion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="9.5"
-                        android:text="@string/iv_emotions"
-                        android:textColor="#D7CCC8" />
-
-                    <ImageView
-                        android:id="@+id/ImgArrowSectionUp3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_that_show_the_content_of_this_section"
-                        app:srcCompat="@android:drawable/arrow_up_float" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/body_section4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/lblQuestion9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/what_emotion_dominates_most_often_in_your_dreams"
-                        android:textColor="#F5F5F5" />
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipJoy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="true"
-                            android:text="@string/joy" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipConfusion"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="true"
-                            android:text="@string/confusion" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipSerenity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="true"
-                            android:text="@string/serenity" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipFear"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="true"
-                            android:text="@string/fear" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipStress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="true"
-                            android:text="@string/stress" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipSadness"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="true"
-                            android:text="@string/sadness" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipAnger"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checkable="true"
-                            android:text="@string/anger" />
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <TextView
-                        android:id="@+id/lblQuestion10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/in_your_opinion_your_dreams_are_mainly"
-                        android:textColor="#F5F5F5" />
-
-                    <Spinner
-                        android:id="@+id/spinnerOpinion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="48dp" />
-
-                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/bttResult"
+        android:id="@+id/nextBttn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="addUser"
-        android:text="@string/result"
+        android:layout_marginBottom="8dp"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,4 +42,25 @@
     <string name="credits">Credits</string>
     <string name="start">Start</string>
     <string name="nigth_sky_background">Nigth Sky background</string>
+    <string name="joy_or_excitement">Joy or Excitement</string>
+    <string name="fear_or_anxiety">Fear or Anxiety</string>
+    <string name="which_of_the_following_emotions_did_you_experience_during_your_dream">Which of the following emotions did you experience during your dream?</string>
+    <string name="next">Next</string>
+    <string name="v_the_escape_of_dreams">V.The Escape of Dreams</string>
+    <string name="extreme_confusion">Extreme Confusion</string>
+    <string name="terrible_sadness">Terrible Sadness</string>
+    <string name="endless_bag_of_candy">Endless bag of candy</string>
+    <string name="the_clown_it">The clown IT</string>
+    <string name="a_fight_between_all_your_exes">A fight between all your exes</string>
+    <string name="freddy_fazbear" translatable="false">Freddy Fazbear</string>
+    <string name="which_of_the_following_would_you_create_in_a_lucid_dream">Which of the following would you create in a lucid dream?</string>
+    <string name="money_hehehe">Money hehehe</string>
+    <string name="big_teddy_bear">Big Teddy bear</string>
+    <string name="frustration">Frustration</string>
+    <string name="what_emotion_stands_out_most_in_your_dreams">What emotion stands out most in your dreams?</string>
+    <string name="work_paper">Work paper</string>
+    <string name="almost_done">Almost done !</string>
+    <string name="did_you_enjoy_this_test">Did you enjoy this test ?</string>
+    <string name="happy_smile">Happy smile</string>
+    <string name="sad_smile">Sad smile</string>
 </resources>
