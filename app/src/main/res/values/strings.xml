@@ -63,4 +63,5 @@
     <string name="did_you_enjoy_this_test">Did you enjoy this test ?</string>
     <string name="happy_smile">Happy smile</string>
     <string name="sad_smile">Sad smile</string>
+    <string name="enter_value">Please enter a correct value</string>
 </resources>

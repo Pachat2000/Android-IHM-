@@ -3,12 +3,14 @@ package com.example.projectihm;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.projectihm.dbmanager.AppDatabase;
+import com.example.projectihm.users.Users;
+
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
@@ -40,11 +49,15 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout body1 = findViewById(R.id.body_section1);
         ImageView arrow1 = findViewById(R.id.ImgArrowSectionUp);
 
+        userFirstName = findViewById(R.id.editName);
+        userLastName = findViewById(R.id.editLastName);
+        userEmailAdress = findViewById(R.id.editEmail);
+
         setupAction(header1, body1, arrow1);
 
         Button next = findViewById(R.id.nextBttn);
         next.setOnClickListener(view -> {
-            startActivity(new Intent(this, MainActivity2.class));
+            addUser(view);
         });
 
     }
@@ -64,33 +77,44 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    public void addUser(View view){
-//        AppDatabase db = AppDatabase.getDatabase(this);
-//        Users user = new Users(
-//                userFirstName.getText().toString(),
-//                userLastName.getText().toString(),
-//                userEmailAdress.getText().toString()
-//        );
-//
-//        Single<Long> c = db.usersDAO().insertUserAsync(user);
-//
-//        Disposable disposable = c.subscribeOn(Schedulers.io())
-//                .subscribe((userId) -> {
-//                    // succes de l'insertion
-//                    MainActivity.this.runOnUiThread(() -> {
-//                        Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
-//                        Log.d(TAG,"Ajouté : "+user);
-//                    });
-//                    // user association to the answer given, only if user created
-//                    registerAnswers(view, userId.intValue());
-//                }, throwable -> {
-//                    // en cas d'erreur
-//                    runOnUiThread(() -> {
-//                        Toast.makeText(this, "Error while registering your information", Toast.LENGTH_SHORT).show();
-//                        Log.e(TAG, "Error on insert in users", throwable);
-//                    });
-//                });
-//    }
+    /**
+     * Add all information about the user in the database
+     * And go to the next activity only if the user enter correct value
+     * @param view
+     */
+    public void addUser(View view){
+        AppDatabase db = AppDatabase.getDatabase(this);
+        if(userFirstName.getText().toString().isEmpty() || userLastName.getText().toString().isEmpty() || userEmailAdress.getText().toString().isEmpty()){
+            Toast.makeText(this, getString(R.string.enter_value), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Users user = new Users(
+                    userFirstName.getText().toString(),
+                    userLastName.getText().toString(),
+                    userEmailAdress.getText().toString()
+            );
+
+            Single<Long> c = db.usersDAO().insertUserAsync(user);
+
+            Disposable disposable = c.subscribeOn(Schedulers.io())
+                    .subscribe((userId) -> {
+                        // succes de l'insertion
+                        MainActivity.this.runOnUiThread(() -> {
+                            Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Ajouté : " + user);
+                            startActivity(new Intent(this, MainActivity2.class));
+                        });
+                        // user association to the answer given, only if user created
+                        //registerAnswers(view, userId.intValue());
+                    }, throwable -> {
+                        // en cas d'erreur
+                        runOnUiThread(() -> {
+                            Toast.makeText(this, "Error while registering your information", Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, "Error on insert in users", throwable);
+                        });
+                    });
+        }
+    }
 //
 //    public void registerAnswers(View view, int userId){
 //        AppDatabase db = AppDatabase.getDatabase(this);
