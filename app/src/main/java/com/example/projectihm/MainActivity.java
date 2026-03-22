@@ -1,6 +1,5 @@
 package com.example.projectihm;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +18,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projectihm.answers.Answers;
 import com.example.projectihm.dbmanager.AppDatabase;
 import com.example.projectihm.users.Users;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText userFirstName;
     private EditText userLastName;
     private EditText userEmailAdress;
+
+    public Intent nextActiviyIntent;
 
     //@SuppressLint("MissingInflatedId")
     @Override
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        nextActiviyIntent = new Intent(this, MainActivity2.class);
+
         LinearLayout header1 = findViewById(R.id.header_section1);
         LinearLayout body1 = findViewById(R.id.body_section1);
         ImageView arrow1 = findViewById(R.id.ImgArrowSectionUp);
@@ -56,9 +62,6 @@ public class MainActivity extends AppCompatActivity {
         setupAction(header1, body1, arrow1);
 
         Button next = findViewById(R.id.nextBttn);
-        next.setOnClickListener(view -> {
-            addUser(view);
-        });
 
     }
 
@@ -98,16 +101,17 @@ public class MainActivity extends AppCompatActivity {
 
             Disposable disposable = c.subscribeOn(Schedulers.io())
                     .subscribe((userId) -> {
-                        // succes de l'insertion
+                        // successful insert
                         MainActivity.this.runOnUiThread(() -> {
                             Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "Ajouté : " + user);
-                            startActivity(new Intent(this, MainActivity2.class));
+                            Log.d(TAG, "Added : " + user);
                         });
-                        // user association to the answer given, only if user created
-                        //registerAnswers(view, userId.intValue());
+                        // user id recuperation for next activity
+                        nextActiviyIntent.putExtra("USER_ID", userId.intValue());
+                        // new activity starting
+                        startActivity(nextActiviyIntent);
                     }, throwable -> {
-                        // en cas d'erreur
+                        // failed insert
                         runOnUiThread(() -> {
                             Toast.makeText(this, "Error while registering your information", Toast.LENGTH_SHORT).show();
                             Log.e(TAG, "Error on insert in users", throwable);
@@ -115,13 +119,13 @@ public class MainActivity extends AppCompatActivity {
                     });
         }
     }
-//
+
 //    public void registerAnswers(View view, int userId){
 //        AppDatabase db = AppDatabase.getDatabase(this);
 //
 //        // collect answers
-//        float dFrequency = dreamFrequency.getProgress();
-//        float dDetails = dreamDetails.getRating();
+//        float dFrequency = dreamingDegree.getProgress();
+//        float dDetails = joyDegree.getRating();
 //        float dLucid = 0.f;
 //
 //        if(sNever.isChecked()) dLucid += 1.f;
@@ -189,6 +193,6 @@ public class MainActivity extends AppCompatActivity {
 //    }
 //
 //    public void testing(View view){
-//        Log.d(TAG,"Etoiles :"+dreamDetails.getNumStars());
+//        Log.d(TAG,"Etoiles :"+joyDegree.getNumStars());
 //    }
 }

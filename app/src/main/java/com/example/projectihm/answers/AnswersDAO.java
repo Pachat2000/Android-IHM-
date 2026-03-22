@@ -40,6 +40,36 @@ public interface AnswersDAO {
     Answers findByUid(int uid);
 
     /**
+     * Update the value of dreaming_degree column
+     */
+    @Query("UPDATE answers SET dreaming_degree = dreaming_degree + :newDreamingDegree WHERE user_id = :userId AND uid = :answerId")
+    void addDreamingDegree(int answerId, int userId, float newDreamingDegree);
+
+    /**
+     * Update the value of joy_degree column
+     */
+    @Query("UPDATE answers SET joy_degree = joy_degree + :newJoyDegree WHERE user_id = :userId AND uid = :answerId")
+    void addJoyDegree(int answerId, int userId, float newJoyDegree);
+
+    /**
+     * Update the value of anger_degree column
+     */
+    @Query("UPDATE answers SET anger_degree = anger_degree + :newAngerDegree WHERE user_id = :userId AND uid = :answerId")
+    void addAngerDegree(int answerId, int userId, float newAngerDegree);
+
+    /**
+     * Update the value of stress_degree column
+     */
+    @Query("UPDATE answers SET stress_degree = stress_degree + :newStressDegree WHERE user_id = :userId AND uid = :answerId")
+    void addStressDegree(int answerId, int userId, float newStressDegree);
+
+    /**
+     * Update the value of sadness_degree column
+     */
+    @Query("UPDATE answers SET sadness_degree = sadness_degree + :newSadnessDegree WHERE user_id = :userId AND uid = :answerId")
+    void addSadnessDegree(int answerId, int userId, float newSadnessDegree);
+
+    /**
      * Update an answer in the database and ignoring conflicts
      *
      * @param answer answer to update
@@ -58,6 +88,10 @@ public interface AnswersDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAllAsync(Answers... answers);
+
+    // getting new answer id to use later
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    Single<Long> insertAnswerAsync(Answers answer);
 
 
     /**
