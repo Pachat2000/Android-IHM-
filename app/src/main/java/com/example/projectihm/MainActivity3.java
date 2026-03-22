@@ -73,9 +73,6 @@ public class MainActivity3 extends AppCompatActivity {
         Button next = findViewById(R.id.nextBttn4);
 
         nextActiviyIntent = new Intent(this, MainActivity4.class);
-//        next.setOnClickListener(view -> {
-//            startActivity(new Intent(this, MainActivity4.class));
-//        });
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){
@@ -129,7 +126,6 @@ public class MainActivity3 extends AppCompatActivity {
         if(cSadness.isChecked()) sadDegree += 4.f;
         if(cAnger.isChecked()) angerDegree += 4.f;
 
-        Log.d(TAG,"item position : "+sOpinion.getSelectedItemPosition()); // test
         if(sOpinion.getSelectedItemPosition() == 0) stressDegree += 5.f;
         else if(sOpinion.getSelectedItemPosition() == 1) joyDegree += 2.f;
         else if(sOpinion.getSelectedItemPosition() == 2) dDegree += 2.f;
