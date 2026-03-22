@@ -172,10 +172,13 @@ public class MainActivity2 extends AppCompatActivity {
         }
     };
 
+    /**
+     * Create a new section in the answers table to register user's answers
+     * @param view
+     */
     public void registerAnswers(View view){
         AppDatabase db = AppDatabase.getDatabase(this);
 
-        //int answerId = getIntent().getIntExtra("ANSWER_ID", -1);
         int userId = getIntent().getIntExtra("USER_ID",-1);
 
         // collect answers
@@ -224,7 +227,6 @@ public class MainActivity2 extends AppCompatActivity {
                     nextActiviyIntent = new Intent(this, MainActivity3.class);
                     nextActiviyIntent.putExtra("USER_ID", userId);
                     nextActiviyIntent.putExtra("ANSWER_ID",answerId.intValue());
-                    // next activity starting
                     startActivity(nextActiviyIntent);
                 }, throwable -> {
                     //
