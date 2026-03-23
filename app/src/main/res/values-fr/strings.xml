@@ -64,4 +64,11 @@
     <string name="happy_smile">Un sourire radieux</string>
     <string name="sad_smile">Sourire triste</string>
     <string name="enter_value">Entrer une valeur correcte</string>
+    <string name="registerResultBtn">Enregistrer mes résultats</string>
+    <string name="sendResultBtn">Envoyer mes résultats</string>
+    <string name="userName">Nom utilisateur</string>
+    <string name="satisfiedUser">Merci pour votre réponse. \\n Nous sommes ravi que vous ayez apprécier répondre à ce questionnaire !</string>
+    <string name="unsatisfiedUser">Merci pour votre réponse. \\n Nous sommes désolés que répondre à ce formulaire ne vous ai pas plu..</string>
+    <string name="BigDreamer">Vous semblez rêver beaucoup et garder des informations les concernants en tête. \\n Peut-être appréciez-vous beaucoup rêver et aimeriez pouvoir mieux les contrôler.</string>
+    <string name="smallDreamer">Vous ne semblez pas beacoup rêver ou vraiment vous souvenir de ce qu\'il peut se passer dans vos rêves. \\n Peut-être n\'aimez-vous pas vraiment rêver et n\'êtes pas vraiment interessé par les rêves en général.</string>
 </resources>

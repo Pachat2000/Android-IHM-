@@ -26,11 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/start"
-        app:layout_constraintBottom_toTopOf="@+id/ResultBtt"
         app:layout_constraintEnd_toEndOf="@+id/lblMainMenu"
         app:layout_constraintStart_toStartOf="@+id/lblMainMenu"
-        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu" />
 
     <TextView
         android:id="@+id/lblMainMenu"
@@ -47,13 +45,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
-    <Button
-        android:id="@+id/ResultBtt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/result"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

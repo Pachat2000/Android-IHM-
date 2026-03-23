@@ -64,4 +64,17 @@
     <string name="happy_smile">Happy smile</string>
     <string name="sad_smile">Sad smile</string>
     <string name="enter_value">Please enter a correct value</string>
+    <string name="registerResultBtn">Register my result</string>
+    <string name="sendResultBtn">Send me my result</string>
+    <string name="userName">User name</string>
+    <string name="satisfiedUser">Thank you for your answer and your feedback\n We are very grateful you enjoyed answering this form!</string>
+    <string name="unsatisfiedUser">Thank you for your answer and your feedback\n We are sorry you did not enjoyed answering to this form..</string>
+    <string name="BigDreamer">You seems to dream a lot and to have a lot of information remaining when waking up.\n Maybe you enjoy a lot to dream and wish to be able to control them better.</string>
+    <string name="smallDreamer">You seems to not be dreaming a lot and not really remembering a lot of what happen in your dreams. \n Maybe you do not really enjoy dreaming and do not really care about dreams in general.</string>
+    <string name="joyfullDreamer" translatable="false">joy</string>
+    <string name="stressfullDreamer" translatable="false">stress</string>
+    <string name="angryfullDreamer" translatable="false">anger</string>
+    <string name="sadDreamer" translatable="false">sad</string>
+
+
 </resources>

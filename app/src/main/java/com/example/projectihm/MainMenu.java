@@ -14,7 +14,6 @@ public class MainMenu extends AppCompatActivity {
 
     private static final String TAG = "MainMenu";
     private Button startActivityBtt;
-    private Button resultBtt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +29,9 @@ public class MainMenu extends AppCompatActivity {
 
 
         startActivityBtt = findViewById(R.id.startActivityBtt);
-        resultBtt = findViewById(R.id.ResultBtt);
 
         startActivityBtt.setOnClickListener(view -> {
             startActivity(new Intent(this, MainActivity.class));
-        });
-
-        resultBtt.setOnClickListener(view -> {
-            startActivity(new Intent(this, MainResult.class));
         });
 
 
