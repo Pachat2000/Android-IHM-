@@ -40,6 +40,46 @@ public interface AnswersDAO {
     Answers findByUid(int uid);
 
     /**
+     * Get joy score related to the answer which uid is set in parameter
+     * @param uid answer uid
+     * @return joy score
+     */
+    @Query("SELECT joy_degree FROM answers WHERE uid LIKE :uid LIMIT 1")
+    float getJoyScore(int uid);
+
+    /**
+     * Get anger score related to the answer which uid is set in parameter
+     * @param uid answer uid
+     * @return anger score
+     */
+    @Query("SELECT anger_degree FROM answers WHERE uid LIKE :uid LIMIT 1")
+    float getAngerScore(int uid);
+
+    /**
+     * Get stress score related to the answer which uid is set in parameter
+     * @param uid answer uid
+     * @return stress score
+     */
+    @Query("SELECT stress_degree FROM answers WHERE uid LIKE :uid LIMIT 1")
+    float getStressScore(int uid);
+
+    /**
+     * Get sad score related to the answer which uid is set in parameter
+     * @param uid answer uid
+     * @return sad score
+     */
+    @Query("SELECT sadness_degree FROM answers WHERE uid LIKE :uid LIMIT 1")
+    float getSadScore(int uid);
+
+    /**
+     * Get dream score related to the answer which uid is set in parameter
+     * @param uid answer uid
+     * @return dream score
+     */
+    @Query("SELECT dreaming_degree FROM answers WHERE uid LIKE :uid LIMIT 1")
+    float getDreamScore(int uid);
+
+    /**
      * Update the value of dreaming_degree column
      */
     @Query("UPDATE answers SET dreaming_degree = dreaming_degree + :newDreamingDegree WHERE user_id = :userId AND uid = :answerId")

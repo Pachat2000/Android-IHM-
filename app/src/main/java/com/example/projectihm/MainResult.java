@@ -1,6 +1,7 @@
 package com.example.projectihm;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainResult extends AppCompatActivity {
+
+    TextView userName;
+    TextView userSatisfaction;
+    TextView userDreaming;
+    TextView userEmotion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +26,15 @@ public class MainResult extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+
+    public void setResult(){
+        int answerId = getIntent().getIntExtra("ANSWER_ID", -1);
+        int userId = getIntent().getIntExtra("USER_ID",-1);
+        boolean userSatisfaction = getIntent().getBooleanExtra("USER_OPINION", false);
+
+
+
     }
 }

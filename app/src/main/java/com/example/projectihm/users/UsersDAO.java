@@ -39,6 +39,22 @@ public interface UsersDAO {
     Users findByName(String first, String last);
 
     /**
+     * Get a user last name using their uid
+     * @param uid user uid
+     * @return user last name
+     */
+    @Query("SELECT last_name FROM users WHERE uid LIKE :uid")
+    String getLastName(int uid);
+
+    /**
+     * Get a user first name using their uid
+     * @param uid user uid
+     * @return user first name
+     */
+    @Query("SELECT first_name FROM users WHERE uid LIKE :uid")
+    String getFirstName(int uid);
+
+    /**
      * Update a user in the database and ignoring conflicts
      *
      * @param user user to update

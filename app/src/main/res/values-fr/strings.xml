@@ -67,8 +67,12 @@
     <string name="registerResultBtn">Enregistrer mes résultats</string>
     <string name="sendResultBtn">Envoyer mes résultats</string>
     <string name="userName">Nom utilisateur</string>
-    <string name="satisfiedUser">Merci pour votre réponse. \\n Nous sommes ravi que vous ayez apprécier répondre à ce questionnaire !</string>
-    <string name="unsatisfiedUser">Merci pour votre réponse. \\n Nous sommes désolés que répondre à ce formulaire ne vous ai pas plu..</string>
-    <string name="BigDreamer">Vous semblez rêver beaucoup et garder des informations les concernants en tête. \\n Peut-être appréciez-vous beaucoup rêver et aimeriez pouvoir mieux les contrôler.</string>
-    <string name="smallDreamer">Vous ne semblez pas beacoup rêver ou vraiment vous souvenir de ce qu\'il peut se passer dans vos rêves. \\n Peut-être n\'aimez-vous pas vraiment rêver et n\'êtes pas vraiment interessé par les rêves en général.</string>
+    <string name="satisfiedUser">Merci pour votre réponse.\nNous sommes ravi que vous ayez apprécier répondre à ce questionnaire !</string>
+    <string name="unsatisfiedUser">Merci pour votre réponse.\nNous sommes désolés que répondre à ce formulaire ne vous ai pas plu..</string>
+    <string name="BigDreamer">Vous semblez rêver beaucoup et garder des informations les concernants en tête.\nPeut-être appréciez-vous beaucoup rêver et aimeriez pouvoir mieux les contrôler.</string>
+    <string name="smallDreamer">Vous ne semblez pas beacoup rêver ou vraiment vous souvenir de ce qu\'il peut se passer dans vos rêves.\nPeut-être n\'aimez-vous pas vraiment rêver et n\'êtes pas vraiment interessé par les rêves en général.</string>
+    <string name="joyfullDreamer">Vos rêves semblent majoritairement positifs et empreints de joie, ce qui peut refléter un état d’esprit globalement serein.\nVous paraissez ouvert(e) aux expériences agréables, et vos rêves pourraient être un prolongement de cette énergie positive.</string>
+    <string name="stressfullDreamer">Vos rêves semblent souvent chargés de stress ou d’inquiétude, ce qui peut être le reflet d’une pression présente dans votre vie de tous les jours.\nVotre esprit pourrait chercher à traiter ces préoccupations pendant votre sommeil.</string>
+    <string name="angryfullDreamer">Vos rêves semblent marqués par de la colère ou de la frustration, ce qui peut traduire des tensions que vous ressentez dans votre quotidien.\nIl est possible que votre esprit utilise ces rêves pour exprimer des émotions que vous gardez habituellement pour vous.</string>
+    <string name="sadDreamer">Vos rêves semblent teintés de tristesse ou de mélancolie, ce qui peut indiquer une certaine sensibilité émotionnelle.\nIl est possible que vos rêves soient un espace où s’expriment des émotions plus profondes ou difficiles à verbaliser.</string>
 </resources>
