@@ -11,7 +11,7 @@ import com.example.projectihm.answers.AnswersDAO;
 import com.example.projectihm.users.Users;
 import com.example.projectihm.users.UsersDAO;
 
-@Database(entities = {Users.class, Answers.class}, version = 3, exportSchema = false)
+@Database(entities = {Users.class, Answers.class}, version = 4, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UsersDAO usersDAO();
 

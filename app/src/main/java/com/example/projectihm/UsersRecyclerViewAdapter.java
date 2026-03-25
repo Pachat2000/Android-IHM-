@@ -16,9 +16,14 @@ import java.util.Locale;
 
 public class UsersRecyclerViewAdapter extends RecyclerView.Adapter<UsersRecyclerViewAdapter.UsersViewHolder> {
     private List<Users> usersList;
+    private OnItemClickListener listener;
 
-    public UsersRecyclerViewAdapter(List<Users> usersList) {
+    public interface OnItemClickListener {
+        void onItemClick(Users user);
+    }
+    public UsersRecyclerViewAdapter(List<Users> usersList, OnItemClickListener listener) {
         this.usersList = new ArrayList<>(usersList);
+        this.listener = (OnItemClickListener) listener;
     }
 
     @NonNull
@@ -31,8 +36,17 @@ public class UsersRecyclerViewAdapter extends RecyclerView.Adapter<UsersRecycler
 
     @Override
     public void onBindViewHolder(@NonNull UsersViewHolder holder, int position) {
-        Users p  = usersList.get(position);
-        holder.updateData(p);
+        Users currentUser  = usersList.get(position);
+        holder.updateData(currentUser);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // On prévient l'Activité en lui passant le bon utilisateur
+                if (listener != null) {
+                    listener.onItemClick(currentUser);
+                }
+            }
+        });
     }
 
     @Override

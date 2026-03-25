@@ -1,5 +1,6 @@
 package com.example.projectihm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,9 +52,16 @@ public class ActivityHistoric extends AppCompatActivity {
         Disposable disposable = single.subscribeOn(Schedulers.io())
                 .subscribe(
                         (historic) -> runOnUiThread(() -> {
-
-                            lblSize.setText(String.format(Locale.getDefault(),"There are %d persons",historic.size()));
-                            UsersRecyclerViewAdapter adapter = new UsersRecyclerViewAdapter(historic);
+                            //A Modifier le string avec la taille de la liste
+                            lblSize.setText(String.format(Locale.getDefault(),"Size of your Historic %d ",historic.size()));
+                            UsersRecyclerViewAdapter adapter = new UsersRecyclerViewAdapter(historic, new UsersRecyclerViewAdapter.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(Users clickedUser) {
+                                    Intent intent = new Intent(ActivityHistoric.this, MainResult.class);
+                                    intent.putExtra("USER_ID_CLIQUE", clickedUser.getUid());
+                                    startActivity(intent);
+                                }
+                            });
                             recyclerView.setAdapter(adapter);
 
                             // ATTENTION: il faut obligatoirement un layout!!!

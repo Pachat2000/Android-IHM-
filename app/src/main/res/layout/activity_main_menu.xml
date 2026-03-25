@@ -29,7 +29,6 @@
         app:layout_constraintEnd_toEndOf="@+id/lblMainMenu"
         app:layout_constraintStart_toStartOf="@+id/lblMainMenu"
         app:layout_constraintTop_toBottomOf="@+id/lblMainMenu" />
-        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu" />
 
     <TextView
         android:id="@+id/lblMainMenu"
@@ -52,7 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/historic"
-        app:layout_constraintStart_toStartOf="@+id/startActivityBtt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startActivityBtt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
