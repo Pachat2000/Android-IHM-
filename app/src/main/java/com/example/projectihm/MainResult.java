@@ -3,6 +3,8 @@ package com.example.projectihm;
 import static java.lang.Math.max;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -31,6 +33,10 @@ public class MainResult extends AppCompatActivity {
     TextView userDreaming;
     TextView userEmotion;
 
+    int answerId;
+    int userId;
+    boolean userSat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,10 @@ public class MainResult extends AppCompatActivity {
             return insets;
         });
 
+        answerId = getIntent().getIntExtra("ANSWER_ID", -1);
+        userId = getIntent().getIntExtra("USER_ID",-1);
+        userSat = getIntent().getBooleanExtra("USER_OPINION", false);
+
         userName = findViewById(R.id.userNameLabel);
         userSatisfaction = findViewById(R.id.userSatisfaction);
         userEmotion = findViewById(R.id.dreamerTypeUser);
@@ -52,10 +62,6 @@ public class MainResult extends AppCompatActivity {
 
 
     public void setResult(){
-
-        int answerId = getIntent().getIntExtra("ANSWER_ID", -1);
-        int userId = getIntent().getIntExtra("USER_ID",-1);
-        boolean userSat = getIntent().getBooleanExtra("USER_OPINION", false);
 
         if(userSat){
             userSatisfaction.setText(getString(R.string.satisfiedUser));
@@ -119,7 +125,7 @@ public class MainResult extends AppCompatActivity {
         Disposable dUser = userSingle.subscribeOn(Schedulers.io())
                 .subscribe(user ->{
                     MainResult.this.runOnUiThread(() -> {
-                        String name = user.getLastName() + " " + user.getFirstName();
+                        String name = user.getFirstName() + " " + user.getLastName();
                         userName.setText(name);
 
                         Toast.makeText(this, "Getting your info", Toast.LENGTH_SHORT).show();
@@ -134,7 +140,52 @@ public class MainResult extends AppCompatActivity {
 
     }
 
-    // TODO : fonction pour send un email
+    // TODO : tester envoie email
+    @SuppressLint("IntentReset")
+    protected void sendResult() {
+        // user email recuperation
+        AppDatabase db = AppDatabase.getDatabase(this);
+
+        Single<Users> userSingle = Single.fromCallable(() ->
+                db.usersDAO().findById(userId)
+        );
+
+        Disposable dUser = userSingle.subscribeOn(Schedulers.io())
+                .subscribe(user ->{
+                    MainResult.this.runOnUiThread(() -> {
+                        String userEmail = user.getEmailAdress();
+
+                        String[] TO = {userEmail};
+                        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                        emailIntent.setData(Uri.parse("mailto:"));
+                        emailIntent.setType("text/plain");
+
+                        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+                        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+                        try {
+                            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                            finish();
+                            Log.i("Finished sending email...", "");
+                        } catch (android.content.ActivityNotFoundException ex) {
+                            Toast.makeText(MainResult.this,
+                                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                        Toast.makeText(this, "Email sent", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Email send successfully");
+                    });
+                }, throwable -> {
+                    MainResult.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Error while sending email", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error sending email", throwable);
+                    });
+                });
+
+        //Log.i(TAG, "Email send to user");
+    }
 
     // TODO : fonction pour put les phrase dans la bd
 
