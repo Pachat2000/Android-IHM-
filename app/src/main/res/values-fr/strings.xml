@@ -63,4 +63,9 @@
     <string name="did_you_enjoy_this_test">Ce test t\'a-t-il plu ?</string>
     <string name="happy_smile">Un sourire radieux</string>
     <string name="sad_smile">Sourire triste</string>
+    <string name="historic">Historique</string>
+    <string name="close">Fermer</string>
+    <string name="loading">Chargement ...</string>
+    <string name="firstname">Prénom</string>
+    <string name="error_loading">Erreur de Chargement</string>
 </resources>
