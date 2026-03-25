@@ -28,7 +28,7 @@ public interface AnswersDAO {
      * ASYNCHRONE
      * Get all users in the database
      *
-     * @return list of all users in the database
+     * @return list of all answers in the database
      */
     @Query("SELECT * FROM answers")
     Single<List<Answers>> getUsersAsync();
@@ -37,7 +37,7 @@ public interface AnswersDAO {
     List<Answers> loadAllByIds(int[] uids);
 
     @Query("SELECT * FROM answers WHERE user_id LIKE :uid LIMIT 1")
-    Answers findByUid(int uid);
+    Answers getAnswerById(int uid);
 
     /**
      * Get joy score related to the answer which uid is set in parameter
