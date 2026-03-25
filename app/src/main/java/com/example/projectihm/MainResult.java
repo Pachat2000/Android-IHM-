@@ -37,4 +37,10 @@ public class MainResult extends AppCompatActivity {
 
 
     }
+
+    // TODO : fonction pour send un email
+
+    // TODO : fonction pour put les phrase dans la bd
+
+    // TODO : fonction pour ecrire dans un fichier les resultats
 }
