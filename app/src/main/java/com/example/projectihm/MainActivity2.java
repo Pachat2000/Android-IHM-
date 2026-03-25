@@ -3,6 +3,7 @@ package com.example.projectihm;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -13,6 +14,7 @@ import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,8 +22,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projectihm.answers.Answers;
+import com.example.projectihm.dbmanager.AppDatabase;
+
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 public class MainActivity2 extends AppCompatActivity {
 
+    public static final String TAG = "MainActivity2";
+
+    public Intent nextActiviyIntent;
     private SeekBar dreamFrequency;
     private RatingBar dreamDetails;
 
@@ -112,9 +124,9 @@ public class MainActivity2 extends AppCompatActivity {
         rbFallS = findViewById(R.id.rbFallSometime);
 
         Button next = findViewById(R.id.nextBttn2);
-        next.setOnClickListener(view -> {
-            startActivity(new Intent(this, MainActivity3.class));
-        });
+//        next.setOnClickListener(view -> {
+//            startActivity(new Intent(this, MainActivity3.class));
+//        });
 
     }
 
@@ -159,4 +171,69 @@ public class MainActivity2 extends AppCompatActivity {
             }
         }
     };
+
+    /**
+     * Create a new section in the answers table to register user's answers
+     * @param view
+     */
+    public void registerAnswers(View view){
+        AppDatabase db = AppDatabase.getDatabase(this);
+
+        int userId = getIntent().getIntExtra("USER_ID",-1);
+
+        // collect answers
+        float dDegree = dreamFrequency.getProgress() + dreamDetails.getRating();
+        float joyDegree = 0.f;
+        float angerDegree = 0.f;
+        float stressDegree = 0.f;
+        float sadDegree = 0.f;
+
+        if(rbFamillyN.isChecked()) joyDegree = 1.0f;
+        else if(rbFamillyR.isChecked()) joyDegree = 2.0f;
+        else if(rbFamillyS.isChecked()) joyDegree = 3.0f;
+        else if(rbFamillyO.isChecked()) joyDegree = 4.0f;
+
+        if(rbLoveN.isChecked()) joyDegree = 1.0f;
+        else if(rbLoveR.isChecked()) joyDegree = 2.0f;
+        else if(rbLoveS.isChecked()) joyDegree = 3.0f;
+        else if(rbLoveO.isChecked()) joyDegree = 4.0f;
+
+        if(rbWorkN.isChecked()) stressDegree += 1.0f;
+        else if(rbWorkR.isChecked()) stressDegree += 2.0f;
+        else if(rbWorkS.isChecked()) stressDegree += 3.0f;
+        else if(rbWorkO.isChecked()) stressDegree += 4.0f;
+
+        if(rbFallN.isChecked()) stressDegree = 1.0f;
+        else if(rbFallR.isChecked()) stressDegree = 2.0f;
+        else if(rbFallS.isChecked()) stressDegree = 3.0f;
+        else if(rbFallO.isChecked()) stressDegree = 4.0f;
+
+        if(sJoy.isChecked()) joyDegree += 2.f;
+        else if(sConfusion.isChecked()) stressDegree += 2.f;
+        else if(sFrustration.isChecked()) angerDegree += 2.f;
+        else if(sFear.isChecked()) stressDegree += 2.f;
+
+        Answers answer = new Answers(userId,dDegree,joyDegree,angerDegree,stressDegree,sadDegree);
+        Single<Long> c = db.answersDAO().insertAnswerAsync(answer);
+
+        Disposable disposable = c.subscribeOn(Schedulers.io())
+                .subscribe((answerId) -> {
+                    // success
+                    MainActivity2.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Answer registered", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG,"New answer "+answerId+" for user "+userId);
+                    });
+
+                    nextActiviyIntent = new Intent(this, MainActivity3.class);
+                    nextActiviyIntent.putExtra("USER_ID", userId);
+                    nextActiviyIntent.putExtra("ANSWER_ID",answerId.intValue());
+                    startActivity(nextActiviyIntent);
+                }, throwable -> {
+                    //
+                    MainActivity2.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Error while registering your answers", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error on update answer", throwable);
+                    });
+                });
+    }
 }

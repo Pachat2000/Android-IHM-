@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +16,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projectihm.dbmanager.AppDatabase;
+
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 public class MainActivity4 extends AppCompatActivity {
 
     public static String TAG = "MainActivity4";
+    public Intent nextActiviyIntent;
+
+    private CheckBox candyCB;
+    private CheckBox teddyCB;
+    private CheckBox freddyCB;
+    private CheckBox moneyCB;
+    private CheckBox exesCB;
+    private CheckBox clownCB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +51,15 @@ public class MainActivity4 extends AppCompatActivity {
 
         setupAction(header5 ,body5, arrow5);
 
-        Button next = findViewById(R.id.nextBttn4);
-        next.setOnClickListener(view -> {
-            Log.d(TAG, "test");
-            startActivity(new Intent(this, MainActivity5.class));
-        });
+        candyCB = findViewById(R.id.candyCB);
+        teddyCB = findViewById(R.id.teddyCB);
+        freddyCB = findViewById(R.id.freddyCB);
+        moneyCB = findViewById(R.id.moneyCB);
+        exesCB = findViewById(R.id.exeCB);
+        clownCB = findViewById(R.id.clownCB);
 
+        Button next = findViewById(R.id.nextBttn4);
+        nextActiviyIntent = new Intent(this, MainActivity5.class);
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){
@@ -56,6 +75,61 @@ public class MainActivity4 extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    /**
+     * Update answers score base on the user answer in this activity
+     * @param view
+     */
+    public void updateAnswer(View view){
+        AppDatabase db = AppDatabase.getDatabase(this);
+
+        int answerId = getIntent().getIntExtra("ANSWER_ID", -1);
+        int userId = getIntent().getIntExtra("USER_ID",-1);
+
+        float dDegree = 0.f;
+        float joyDegree = 0.f;
+        float angerDegree = 0.f;
+        float stressDegree = 0.f;
+        float sadDegree = 0.f;
+
+        if(candyCB.isChecked()) joyDegree+= 4.f;
+        if(teddyCB.isChecked()) sadDegree += 5.f;
+        if(freddyCB.isChecked()) dDegree += 4.f;
+        if(moneyCB.isChecked()) joyDegree += 2.f;
+        if(exesCB.isChecked())angerDegree += 8.f;
+        if(clownCB.isChecked()) stressDegree += 10.f;
+
+        float resJoyDegree = joyDegree;
+        float resAngerDegree = angerDegree;
+        float resStressDegree = stressDegree;
+        float resSadDegree = sadDegree;
+        float resDDegree = dDegree;
+        Completable c = Completable.fromAction(() -> {
+            db.answersDAO().addDreamingDegree(answerId, userId, resDDegree);
+            db.answersDAO().addJoyDegree(answerId, userId, resJoyDegree);
+            db.answersDAO().addAngerDegree(answerId, userId, resAngerDegree);
+            db.answersDAO().addStressDegree(answerId, userId, resStressDegree);
+            db.answersDAO().addSadnessDegree(answerId, userId, resSadDegree);
+        });
+
+        Disposable disposable = c.subscribeOn(Schedulers.io())
+                .subscribe(() -> {
+                    // exécution sur le thread background
+                    MainActivity4.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Answer udpated", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG,"Answer updated "+answerId+" for user "+userId);
+                    });
+                    // information passing to next activity
+                    nextActiviyIntent.putExtra("USER_ID", userId);
+                    nextActiviyIntent.putExtra("ANSWER_ID",answerId);
+                    // next activity starting
+                    startActivity(nextActiviyIntent);
+                }, throwable -> {
+                    MainActivity4.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Error while registering your answers", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error on update answer", throwable);
+                    });
+                });
     }
 }

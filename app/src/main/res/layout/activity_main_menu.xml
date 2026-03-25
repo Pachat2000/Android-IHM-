@@ -29,6 +29,7 @@
         app:layout_constraintEnd_toEndOf="@+id/lblMainMenu"
         app:layout_constraintStart_toStartOf="@+id/lblMainMenu"
         app:layout_constraintTop_toBottomOf="@+id/lblMainMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu" />
 
     <TextView
         android:id="@+id/lblMainMenu"

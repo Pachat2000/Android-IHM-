@@ -1,14 +1,15 @@
 package com.example.projectihm;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 import androidx.activity.EdgeToEdge;
@@ -17,12 +18,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projectihm.answers.Answers;
+import com.example.projectihm.dbmanager.AppDatabase;
+import com.example.projectihm.users.Users;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "MainActivity";
 
     private EditText userFirstName;
     private EditText userLastName;
     private EditText userEmailAdress;
+
+    public Intent nextActiviyIntent;
 
     //@SuppressLint("MissingInflatedId")
     @Override
@@ -36,16 +49,19 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        nextActiviyIntent = new Intent(this, MainActivity2.class);
+
         LinearLayout header1 = findViewById(R.id.header_section1);
         LinearLayout body1 = findViewById(R.id.body_section1);
         ImageView arrow1 = findViewById(R.id.ImgArrowSectionUp);
 
+        userFirstName = findViewById(R.id.editName);
+        userLastName = findViewById(R.id.editLastName);
+        userEmailAdress = findViewById(R.id.editEmail);
+
         setupAction(header1, body1, arrow1);
 
         Button next = findViewById(R.id.nextBttn);
-        next.setOnClickListener(view -> {
-            startActivity(new Intent(this, MainActivity2.class));
-        });
 
     }
 
@@ -64,107 +80,47 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    public void addUser(View view){
-//        AppDatabase db = AppDatabase.getDatabase(this);
-//        Users user = new Users(
-//                userFirstName.getText().toString(),
-//                userLastName.getText().toString(),
-//                userEmailAdress.getText().toString()
-//        );
-//
-//        Single<Long> c = db.usersDAO().insertUserAsync(user);
-//
-//        Disposable disposable = c.subscribeOn(Schedulers.io())
-//                .subscribe((userId) -> {
-//                    // succes de l'insertion
-//                    MainActivity.this.runOnUiThread(() -> {
-//                        Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
-//                        Log.d(TAG,"Ajouté : "+user);
-//                    });
-//                    // user association to the answer given, only if user created
-//                    registerAnswers(view, userId.intValue());
-//                }, throwable -> {
-//                    // en cas d'erreur
-//                    runOnUiThread(() -> {
-//                        Toast.makeText(this, "Error while registering your information", Toast.LENGTH_SHORT).show();
-//                        Log.e(TAG, "Error on insert in users", throwable);
-//                    });
-//                });
-//    }
-//
-//    public void registerAnswers(View view, int userId){
-//        AppDatabase db = AppDatabase.getDatabase(this);
-//
-//        // collect answers
-//        float dFrequency = dreamFrequency.getProgress();
-//        float dDetails = dreamDetails.getRating();
-//        float dLucid = 0.f;
-//
-//        if(sNever.isChecked()) dLucid += 1.f;
-//        else if(sRarely.isChecked())dLucid += 2.f;
-//        else if(sSometime.isChecked()) dLucid += 3.f;
-//        else if(sOften.isChecked()) dLucid += 4.f;
-//
-//        float tFamilly = 0.f;
-//        float tLove = 0.f;
-//        float tWork = 0.f;
-//        float tFall = 0.f;
-//
-//        if(rbFamillyN.isChecked()) tFamilly = 1.0f;
-//        else if(rbFamillyR.isChecked()) tFamilly = 2.0f;
-//        else if(rbFamillyO.isChecked()) tFamilly = 3.0f;
-//        else if(rbFamillyS.isChecked()) tFamilly = 4.0f;
-//
-//        if(rbLoveN.isChecked()) tLove = 1.0f;
-//        else if(rbLoveR.isChecked()) tLove = 2.0f;
-//        else if(rbLoveO.isChecked()) tLove = 3.0f;
-//        else if(rbLoveS.isChecked()) tLove = 4.0f;
-//
-//        if(rbWorkN.isChecked()) tWork = 1.0f;
-//        else if(rbWorkR.isChecked()) tWork = 2.0f;
-//        else if(rbWorkO.isChecked()) tWork = 3.0f;
-//        else if(rbWorkS.isChecked()) tWork = 4.0f;
-//
-//        if(rbFallN.isChecked()) tFall = 1.0f;
-//        else if(rbFallR.isChecked()) tFall = 2.0f;
-//        else if(rbFallO.isChecked()) tFall = 3.0f;
-//        else if(rbFallS.isChecked()) tFall = 4.0f;
-//
-//
-//        Answers answer = new Answers(userId,dFrequency,dDetails,dLucid,tFamilly,tLove,tWork,tFall,
-//                cJoy.isChecked() ? 2.f : 1.f,
-//                cConfusion.isChecked() ? 2.f : 1.f,
-//                cSerenity.isChecked() ? 2.f : 1.f,
-//                cFear.isChecked() ? 2.f : 1.f,
-//                cStress.isChecked() ? 2.f : 1.f,
-//                cStress.isChecked() ? 2.f : 1.f,
-//                cAnger.isChecked() ? 2.f : 1.f,
-//                sOpinion.getSelectedItem().toString());
-//
-//        Completable c = db.answersDAO().insertAllAsync(answer);
-//
-//        Disposable disposable = c.subscribeOn(Schedulers.io())
-//                .subscribe(() -> {
-//                    // succes de l'insertion
-//                    MainActivity.this.runOnUiThread(() -> {
-//                        Toast.makeText(this, "Answer registered", Toast.LENGTH_SHORT).show();
-//                        Log.d(TAG,"Added : "+answer);
-//                    });
-//                }, throwable -> {
-//                    // en cas d'erreur
-//                    runOnUiThread(() -> {
-//                        Toast.makeText(this, "Error while registering your answers", Toast.LENGTH_SHORT).show();
-//                        Log.e(TAG, "Error on insert in answers", throwable);
-//                    });
-//                });
-//
-//    }
-//
-//    public void evaluateAnswers(View view){
-//        addUser(view);
-//    }
-//
-//    public void testing(View view){
-//        Log.d(TAG,"Etoiles :"+dreamDetails.getNumStars());
-//    }
+    /**
+     * Add all information about the user in the database
+     * And go to the next activity only if the user enter correct value
+     * @param view
+     */
+    public void addUser(View view){
+        AppDatabase db = AppDatabase.getDatabase(this);
+        if(userFirstName.getText().toString().isEmpty() || userLastName.getText().toString().isEmpty() || userEmailAdress.getText().toString().isEmpty()){
+            Toast.makeText(this, getString(R.string.enter_value), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Users user = new Users(
+                    userFirstName.getText().toString(),
+                    userLastName.getText().toString(),
+                    userEmailAdress.getText().toString()
+            );
+
+            Single<Long> c = db.usersDAO().insertUserAsync(user);
+
+            Disposable disposable = c.subscribeOn(Schedulers.io())
+                    .subscribe((userId) -> {
+                        // successful insert
+                        MainActivity.this.runOnUiThread(() -> {
+                            Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Added : " + user);
+                        });
+                        // user id recuperation for next activity
+                        nextActiviyIntent.putExtra("USER_ID", userId.intValue());
+                        // new activity starting
+                        startActivity(nextActiviyIntent);
+                    }, throwable -> {
+                        // failed insert
+                        runOnUiThread(() -> {
+                            Toast.makeText(this, "Error while registering your information", Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, "Error on insert in users", throwable);
+                        });
+                    });
+        }
+    }
+
+    // TODO : ajouter un bouton historique pour accedet à un page d'historique
+    //  voir comment récuperer les infos quand un utilisateur clique sur un des boutons de l'historique pour afficher
+    //  le resultat dans la page qui faut (voir pour réutiliser la page résultat existante ??)
 }

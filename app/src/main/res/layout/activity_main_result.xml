@@ -14,9 +14,10 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/nighth_sky" />
 
     <TextView
@@ -24,10 +25,91 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:scaleX="2.5"
+        android:scaleY="2.5"
         android:text="@string/result"
         android:textColor="#F5F5F5"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imgBackgroung" />
+
+    <TextView
+        android:id="@+id/userNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="@string/userName"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/userSatisfaction"
+        android:layout_width="252dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:singleLine="false"
+        android:text="@string/unsatisfiedUser"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/imgBackgroung"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameLabel" />
+
+    <TextView
+        android:id="@+id/degreeDreamerLabel"
+        android:layout_width="252dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="@string/BigDreamer"
+        android:textAlignment="textStart"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSatisfaction" />
+
+    <TextView
+        android:id="@+id/dreamerTypeUser"
+        android:layout_width="252dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="@string/joyfullDreamer"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/imgBackgroung"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/degreeDreamerLabel"
+        app:layout_constraintTop_toBottomOf="@+id/degreeDreamerLabel" />
+
+    <Button
+        android:id="@+id/registerResultBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/registerResultBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/sendResultBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/sendResultBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/registerResultBtn"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

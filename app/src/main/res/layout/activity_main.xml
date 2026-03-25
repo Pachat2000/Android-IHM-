@@ -118,7 +118,8 @@
                         android:textColor="#F5F5F5"
                         android:textColorHighlight="#F5F5F5"
                         android:textColorHint="#F5F5F5"
-                        android:textColorLink="#F5F5F5" />
+                        android:textColorLink="#F5F5F5"
+                        tools:ignore="VisualLintTextFieldSize" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -149,7 +150,8 @@
                         android:textColor="#F5F5F5"
                         android:textColorHighlight="#F5F5F5"
                         android:textColorHint="#F5F5F5"
-                        android:textColorLink="#F5F5F5" />
+                        android:textColorLink="#F5F5F5"
+                        tools:ignore="VisualLintTextFieldSize" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -196,7 +198,8 @@
                         android:textColor="#F5F5F5"
                         android:textColorHighlight="#F5F5F5"
                         android:textColorHint="#F5F5F5"
-                        android:textColorLink="#F5F5F5" />
+                        android:textColorLink="#F5F5F5"
+                        tools:ignore="VisualLintTextFieldSize" />
 
                 </LinearLayout>
 
@@ -204,7 +207,7 @@
                     android:id="@+id/Space"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical" />
 
             </LinearLayout>
 
@@ -216,6 +219,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:onClick="addUser"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

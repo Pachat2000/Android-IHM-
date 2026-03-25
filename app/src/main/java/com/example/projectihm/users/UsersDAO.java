@@ -34,9 +34,24 @@ public interface UsersDAO {
     @Query("SELECT * FROM users WHERE uid IN (:uids)")
     List<Users> loadAllByIds(int[] uids);
 
-    @Query("SELECT * FROM users WHERE first_name LIKE :first AND " +
-            "last_name LIKE :last LIMIT 1")
-    Users findByName(String first, String last);
+    @Query("SELECT * FROM users WHERE uid LIKE :uid LIMIT 1")
+    Users findById(int uid);
+
+    /**
+     * Get a user last name using their uid
+     * @param uid user uid
+     * @return user last name
+     */
+    @Query("SELECT last_name FROM users WHERE uid LIKE :uid")
+    String getLastName(int uid);
+
+    /**
+     * Get a user first name using their uid
+     * @param uid user uid
+     * @return user first name
+     */
+    @Query("SELECT first_name FROM users WHERE uid LIKE :uid")
+    String getFirstName(int uid);
 
     /**
      * Update a user in the database and ignoring conflicts
