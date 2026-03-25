@@ -63,6 +63,12 @@
     <string name="did_you_enjoy_this_test">Did you enjoy this test ?</string>
     <string name="happy_smile">Happy smile</string>
     <string name="sad_smile">Sad smile</string>
+    <string name="historic">Historic</string>
+    <string name="close">Close</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="loading">Loading ...</string>
+    <string name="firstname">Firstname</string>
+    <string name="error_loading">Error Loading</string>
     <string name="enter_value">Please enter a correct value</string>
     <string name="registerResultBtn">Register my result</string>
     <string name="sendResultBtn">Send me my result</string>

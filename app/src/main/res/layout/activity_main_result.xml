@@ -24,7 +24,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:scaleX="2.5"
         android:scaleY="2.5"
         android:text="@string/result"
@@ -38,7 +38,7 @@
         android:id="@+id/userNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:text="@string/userName"
@@ -47,49 +47,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/userSatisfaction"
-        android:layout_width="252dp"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:singleLine="false"
-        android:text="@string/unsatisfiedUser"
-        android:textAlignment="textStart"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/imgBackgroung"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameLabel" />
+        app:layout_constraintBottom_toTopOf="@+id/sendResultBtn"
+        app:layout_constraintTop_toBottomOf="@+id/userNameLabel">
 
-    <TextView
-        android:id="@+id/degreeDreamerLabel"
-        android:layout_width="252dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:text="@string/BigDreamer"
-        android:textAlignment="textStart"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userSatisfaction" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/dreamerTypeUser"
-        android:layout_width="252dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:text="@string/joyfullDreamer"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/imgBackgroung"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/degreeDreamerLabel"
-        app:layout_constraintTop_toBottomOf="@+id/degreeDreamerLabel" />
+            <TextView
+                android:id="@+id/userSatisfaction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:singleLine="false"
+                android:text="@string/unsatisfiedUser"
+                android:textAlignment="textStart"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/degreeDreamerLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/BigDreamer"
+                android:textAlignment="textStart"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/dreamerTypeUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/joyfullDreamer"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/registerResultBtn"
@@ -99,17 +107,14 @@
         android:text="@string/registerResultBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/sendResultBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
         android:text="@string/sendResultBtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/registerResultBtn"
-        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintBottom_toTopOf="@+id/registerResultBtn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

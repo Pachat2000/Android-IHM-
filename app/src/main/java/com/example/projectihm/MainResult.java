@@ -19,6 +19,11 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.projectihm.answers.Answers;
 import com.example.projectihm.dbmanager.AppDatabase;
 import com.example.projectihm.users.Users;
+import com.example.projectihm.users.UsersDAO;
+import android.widget.EditText;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.text.InputType;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -47,6 +52,8 @@ public class MainResult extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        // Ryan ce bout de code te permet de recuperer id du user depuis l'historique
+        //int id = getIntent().getIntExtra("USER_ID_CLIQUE", -1);
 
         answerId = getIntent().getIntExtra("ANSWER_ID", -1);
         userId = getIntent().getIntExtra("USER_ID",-1);
@@ -61,12 +68,11 @@ public class MainResult extends AppCompatActivity {
     }
 
 
-    public void setResult(){
+    public void setResult() {
 
-        if(userSat){
+        if (userSat) {
             userSatisfaction.setText(getString(R.string.satisfiedUser));
-        }
-        else{
+        } else {
             userSatisfaction.setText(getString(R.string.unsatisfiedUser));
         }
 
@@ -89,31 +95,31 @@ public class MainResult extends AppCompatActivity {
 
                         float maxEmotion = max(joy, max(anger, max(stress, sad)));
 
-                        if(maxEmotion == joy){
+                        if (maxEmotion == joy) {
                             userEmotion.setText(getString(R.string.joyfullDreamer));
-                        }
-                        else if(maxEmotion == anger){
+                        } else if (maxEmotion == anger) {
                             userEmotion.setText(getString(R.string.angryfullDreamer));
-                        }
-                        else if(maxEmotion == sad){
+                        } else if (maxEmotion == sad) {
                             userEmotion.setText(getString(R.string.sadDreamer));
-                        }
-                        else{
+                        } else {
                             userEmotion.setText(getString(R.string.stressfullDreamer));
                         }
 
-                        if(dreaming >= 10){userDreaming.setText(R.string.BigDreamer);}
-                        else{userDreaming.setText(R.string.smallDreamer);}
+                        if (dreaming >= 10) {
+                            userDreaming.setText(R.string.BigDreamer);
+                        } else {
+                            userDreaming.setText(R.string.smallDreamer);
+                        }
 
                         Toast.makeText(this, "Calculating your result", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Calculate result successful");
                     });
 
 
-        }, throwable -> {
+                }, throwable -> {
                     MainResult.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while calculating your result", Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "Error calculating result for answer : "+answerId, throwable);
+                        Log.e(TAG, "Error calculating result for answer : " + answerId, throwable);
                     });
                 });
 
@@ -123,7 +129,7 @@ public class MainResult extends AppCompatActivity {
         );
 
         Disposable dUser = userSingle.subscribeOn(Schedulers.io())
-                .subscribe(user ->{
+                .subscribe(user -> {
                     MainResult.this.runOnUiThread(() -> {
                         String name = user.getFirstName() + " " + user.getLastName();
                         userName.setText(name);
@@ -131,16 +137,16 @@ public class MainResult extends AppCompatActivity {
                         Toast.makeText(this, "Getting your info", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Get user info successful");
                     });
-        }, throwable -> {
+                }, throwable -> {
                     MainResult.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while getting your info", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error on update answer", throwable);
                     });
                 });
-
     }
-
     // TODO : tester envoie email
+    // Ryan : regarde le AlertDialog pour faire facilement l'envoie de l'email
+    // On pourra facilement recuperer le mail que l'utilisateur voudras rentrer
     @SuppressLint("IntentReset")
     protected void sendResult() {
         // user email recuperation
