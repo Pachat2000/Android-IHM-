@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.text.InputType;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicReference;
 
 import javax.xml.transform.Result;
@@ -49,6 +56,9 @@ public class MainResult extends AppCompatActivity {
 
     Button sendResultBtn;
     Button getResultBtn;
+
+    String textResult;
+    String resultFileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +168,9 @@ public class MainResult extends AppCompatActivity {
                         String name = user.getFirstName() + " " + user.getLastName();
                         userName.setText(name);
 
+                        // file name for the user if they want to register their result
+                        resultFileName = "Dream_analyse_"+user.getFirstName()+"_"+user.getLastName()+".txt";
+
                         Toast.makeText(this, "Getting your info", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Get user info successful");
                     });
@@ -215,6 +228,8 @@ public class MainResult extends AppCompatActivity {
                         String name = user.getFirstName() + " " + user.getLastName();
                         userName.setText(name);
 
+                        resultFileName = "Dream_analyse_"+user.getFirstName()+"_"+user.getLastName()+".txt";
+
                         Toast.makeText(this, "Getting your info", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Get user info successful");
                     });
@@ -232,18 +247,44 @@ public class MainResult extends AppCompatActivity {
      */
     protected void sendResult(View view) {
         Intent sendIntent = new Intent();
-        String textToSend = userSatisfaction.getText().toString() + "\n" + userDreaming.getText().toString() + "\n" + userEmotion.getText().toString();
+        textResult = userSatisfaction.getText().toString() + "\n" + userDreaming.getText().toString() + "\n" + userEmotion.getText().toString();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, textToSend);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, textResult);
         sendIntent.setType("text/plain");
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);
         startActivity(shareIntent);
     }
 
-    // TODO : fonction pour ecrire les resultats dans un fichier
+    /**
+     * Register all user result in an external file
+     * @param view view
+     */
     public void registerResult(View view){
 
+        textResult = userSatisfaction.getText().toString() + "\n" + userDreaming.getText().toString() + "\n" + userEmotion.getText().toString();
+
+        File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+        File fileOut = new File(folder,resultFileName);
+
+        Log.d(TAG, "Data saved in " + fileOut.getAbsolutePath());
+        Log.d(TAG, "Data saved in " + fileOut.getName());
+
+        try (FileOutputStream fos = new FileOutputStream(fileOut)) {
+            PrintStream ps = new PrintStream(fos);
+            ps.println(textResult);
+            ps.close();
+
+            Toast.makeText(this, "File download", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "File download successful : " + textResult);
+        } catch (FileNotFoundException e) {
+            Toast.makeText(this, "Error while downloading file", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "File not found", e);
+        } catch (IOException e) {
+            Toast.makeText(this, "Error while downloading file", Toast.LENGTH_SHORT).show();
+            Log.e(TAG,"Error I/O",e);
+        }
     }
 
 
