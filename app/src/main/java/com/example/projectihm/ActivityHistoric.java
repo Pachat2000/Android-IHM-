@@ -58,7 +58,7 @@ public class ActivityHistoric extends AppCompatActivity {
                                 @Override
                                 public void onItemClick(Users clickedUser) {
                                     Intent intent = new Intent(ActivityHistoric.this, MainResult.class);
-                                    intent.putExtra("USER_ID_CLIQUE", clickedUser.getUid());
+                                    intent.putExtra("USER_ID", clickedUser.getUid());
                                     startActivity(intent);
                                 }
                             });

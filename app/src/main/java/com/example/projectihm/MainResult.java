@@ -78,13 +78,15 @@ public class MainResult extends AppCompatActivity {
         getResultBtn = findViewById(R.id.registerResultBtn);
         getResultBtn.setOnClickListener(this::registerResult);
 
-        setResult();
+        // to know if we are getting on result page from historic activity or after answers activities
+        if(answerId != -1)setResultFromAnswers();
+        else setResultFromDB();
 
 
     }
 
 
-    public void setResult() {
+    public void setResultFromAnswers() {
 
         if (userSat) {
             userSatisfaction.setText(getString(R.string.satisfiedUser));
@@ -127,12 +129,12 @@ public class MainResult extends AppCompatActivity {
                             userDreaming.setText(R.string.smallDreamer);
                         }
 
-                        Toast.makeText(this, "Calculating your result", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "Calculate result successful");
-                    });
+                        // registering result setting in database
+                        registerResultDB();
 
-                    // registering result setting in database
-                    registerResultDB();
+                        Toast.makeText(this, "Calculating your result", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Calculate result from answers successful");
+                    });
 
 
                 }, throwable -> {
@@ -160,6 +162,59 @@ public class MainResult extends AppCompatActivity {
                     MainResult.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while getting your info", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error on update answer", throwable);
+                    });
+                });
+    }
+
+    public void setResultFromDB() {
+
+        // result recuperation in database
+        AppDatabase db = AppDatabase.getDatabase(this);
+
+        Single<Results> resultSingle = Single.fromCallable(() ->
+                db.resultsDAO().getResultByUserId(userId)
+        );
+
+        Disposable dResult = resultSingle.subscribeOn(Schedulers.io())
+                .subscribe(result -> {
+                    MainResult.this.runOnUiThread(() -> {
+                        String opinion = result.getOpinion();
+                        String emotionAnalyse = result.getEmotionAnalyse();
+                        String dreamerType = result.getDreamerType();
+
+                        userEmotion.setText(emotionAnalyse);
+                        userDreaming.setText(dreamerType);
+                        userSatisfaction.setText(opinion);
+
+                        Toast.makeText(this, "Calculating your result", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Calculate result from DB successful");
+                    });
+
+                }, throwable -> {
+                    MainResult.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Error while calculating your result", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error getting result from DB : " + answerId, throwable);
+                    });
+                });
+
+        // user info recuperation
+        Single<Users> userSingle = Single.fromCallable(() ->
+                db.usersDAO().findById(userId)
+        );
+
+        Disposable dUser = userSingle.subscribeOn(Schedulers.io())
+                .subscribe(user -> {
+                    MainResult.this.runOnUiThread(() -> {
+                        String name = user.getFirstName() + " " + user.getLastName();
+                        userName.setText(name);
+
+                        Toast.makeText(this, "Getting your info", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "Get user info successful");
+                    });
+                }, throwable -> {
+                    MainResult.this.runOnUiThread(() -> {
+                        Toast.makeText(this, "Error while getting your info", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error on update getting user info", throwable);
                     });
                 });
     }
@@ -192,7 +247,7 @@ public class MainResult extends AppCompatActivity {
         Single<Long> c = db.resultsDAO().insertResultAsync(result);
 
         Disposable disposable = c.subscribeOn(Schedulers.io())
-                .subscribe((userId) -> {
+                .subscribe((resultId) -> {
                     // successful insert
                     MainResult.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Result registered", Toast.LENGTH_SHORT).show();
