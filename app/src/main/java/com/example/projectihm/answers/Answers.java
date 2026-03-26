@@ -18,7 +18,7 @@ import com.example.projectihm.users.Users;
         indices = @Index(value = "user_id"))
 public class Answers {
     @PrimaryKey(autoGenerate = true)
-    int uid;
+    int answer_id;
     @ColumnInfo(name = "user_id")
     int userId;
 
@@ -47,7 +47,7 @@ public class Answers {
         this.sadnessDegree = sadnessDegree;
     }
 
-    public int getUid(){return uid;}
+    public int getAnswer_id(){return answer_id;}
     public int getUserId(){return userId;}
     public float getDreamingDegree(){return dreamingDegree;}
     public float getJoyDegree(){return joyDegree;}
@@ -65,7 +65,7 @@ public class Answers {
     @Override
     public String toString() {
         return "Answer{" +
-                "uid=" + uid +
+                "answer_id=" + answer_id +
                 ", user_id='" + userId + '\'' +
                 ", dreamingDegree='" + dreamingDegree + '\'' +
                 ", joyDegree='" + joyDegree + '\'' +

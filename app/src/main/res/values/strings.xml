@@ -71,16 +71,16 @@
     <string name="error_loading">Error Loading</string>
     <string name="enter_value">Please enter a correct value</string>
     <string name="registerResultBtn">Register my result</string>
-    <string name="sendResultBtn">Send me my result</string>
+    <string name="sendResultBtn">Send my result</string>
     <string name="userName">User name</string>
     <string name="satisfiedUser">Thank you for your answer and your feedback\n We are very grateful you enjoyed answering this form!</string>
     <string name="unsatisfiedUser">Thank you for your answer and your feedback\n We are sorry you did not enjoyed answering to this form..</string>
     <string name="BigDreamer">You seems to dream a lot and to have a lot of information remaining when waking up.\n Maybe you enjoy a lot to dream and wish to be able to control them better.</string>
     <string name="smallDreamer">You seems to not be dreaming a lot and not really remembering a lot of what happen in your dreams. \n Maybe you do not really enjoy dreaming and do not really care about dreams in general.</string>
-    <string name="joyfullDreamer">Your dreams seem mostly positive and filled with joy, which may reflect a generally calm and balanced state of mind.\\nYou appear open to pleasant experiences, and your dreams could be an extension of that positive energy.</string>
-    <string name="stressfullDreamer">Your dreams often seem filled with stress or worry, which may mirror pressure present in your everyday life.\\nYour mind could be trying to process these concerns while you sleep.</string>
-    <string name="angryfullDreamer">Your dreams seem marked by anger or frustration, which may reflect tensions you experience in your daily life.\\nIt’s possible that your mind is using dreams to express emotions you don’t always show outwardly.</string>
-    <string name="sadDreamer">Your dreams seem tinged with sadness or melancholy, which may indicate a certain emotional sensitivity.\\nIt’s possible that your dreams are a space where deeper or harder-to-express feelings come through.</string>
+    <string name="joyfullDreamer">Your dreams seem mostly positive and filled with joy, which may reflect a generally calm and balanced state of mind.\nYou appear open to pleasant experiences, and your dreams could be an extension of that positive energy.</string>
+    <string name="stressfullDreamer">Your dreams often seem filled with stress or worry, which may mirror pressure present in your everyday life.\nYour mind could be trying to process these concerns while you sleep.</string>
+    <string name="angryfullDreamer">Your dreams seem marked by anger or frustration, which may reflect tensions you experience in your daily life.\nIt’s possible that your mind is using dreams to express emotions you don’t always show outwardly.</string>
+    <string name="sadDreamer">Your dreams seem tinged with sadness or melancholy, which may indicate a certain emotional sensitivity.\nIt’s possible that your dreams are a space where deeper or harder-to-express feelings come through.</string>
 
 
 </resources>

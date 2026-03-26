@@ -8,14 +8,18 @@ import androidx.room.RoomDatabase;
 
 import com.example.projectihm.answers.Answers;
 import com.example.projectihm.answers.AnswersDAO;
+import com.example.projectihm.results.Results;
 import com.example.projectihm.users.Users;
 import com.example.projectihm.users.UsersDAO;
+import com.example.projectihm.results.ResultsDAO;
 
-@Database(entities = {Users.class, Answers.class}, version = 4, exportSchema = false)
+@Database(entities = {Users.class, Answers.class, Results.class}, version = 6, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UsersDAO usersDAO();
 
     public abstract AnswersDAO answersDAO();
+
+    public abstract ResultsDAO resultsDAO();
 
     private static AppDatabase INSTANCE = null;
 

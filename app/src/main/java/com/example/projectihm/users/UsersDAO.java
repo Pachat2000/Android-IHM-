@@ -38,16 +38,16 @@ public interface UsersDAO {
     Users findById(int uid);
 
     /**
-     * Get a user last name using their uid
-     * @param uid user uid
+     * Get a user last name using their answer_id
+     * @param uid user answer_id
      * @return user last name
      */
     @Query("SELECT last_name FROM users WHERE uid LIKE :uid")
     String getLastName(int uid);
 
     /**
-     * Get a user first name using their uid
-     * @param uid user uid
+     * Get a user first name using their answer_id
+     * @param uid user answer_id
      * @return user first name
      */
     @Query("SELECT first_name FROM users WHERE uid LIKE :uid")

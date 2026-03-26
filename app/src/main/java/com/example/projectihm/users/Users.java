@@ -53,7 +53,7 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                "uid=" + uid +
+                "answer_id=" + uid +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", emailAdress ='" + emailAdress +'\'' +
