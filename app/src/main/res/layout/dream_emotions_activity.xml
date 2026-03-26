@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="@string/nigth_sky_background"
-    tools:context=".MainActivity3">
+    tools:context=".DreamEmotionActivity">
 
     <ImageView
         android:id="@+id/nightSkyImg3"

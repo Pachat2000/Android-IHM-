@@ -22,9 +22,9 @@ import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainActivity4 extends AppCompatActivity {
+public class LucidDreamActivity extends AppCompatActivity {
 
-    public static String TAG = "MainActivity4";
+    public static String TAG = "LucidDreamActivity";
     public Intent nextActiviyIntent;
 
     private CheckBox candyCB;
@@ -38,7 +38,7 @@ public class MainActivity4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.lucid_dream_activity);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -59,7 +59,7 @@ public class MainActivity4 extends AppCompatActivity {
         clownCB = findViewById(R.id.clownCB);
 
         Button next = findViewById(R.id.nextBttn4);
-        nextActiviyIntent = new Intent(this, MainActivity5.class);
+        nextActiviyIntent = new Intent(this, FeedBackActivity.class);
     }
 
     public void setupAction(LinearLayout header, LinearLayout body, ImageView arrow){
@@ -116,7 +116,7 @@ public class MainActivity4 extends AppCompatActivity {
         Disposable disposable = c.subscribeOn(Schedulers.io())
                 .subscribe(() -> {
                     // exécution sur le thread background
-                    MainActivity4.this.runOnUiThread(() -> {
+                    LucidDreamActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Answer udpated", Toast.LENGTH_SHORT).show();
                         Log.d(TAG,"Answer updated "+answerId+" for user "+userId);
                     });
@@ -126,7 +126,7 @@ public class MainActivity4 extends AppCompatActivity {
                     // next activity starting
                     startActivity(nextActiviyIntent);
                 }, throwable -> {
-                    MainActivity4.this.runOnUiThread(() -> {
+                    LucidDreamActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while registering your answers", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error on update answer", throwable);
                     });

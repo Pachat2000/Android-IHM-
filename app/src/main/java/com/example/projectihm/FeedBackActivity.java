@@ -14,7 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity5 extends AppCompatActivity {
+public class FeedBackActivity extends AppCompatActivity {
 
     private boolean selectedSmile = false;
     private boolean selectedSad = false;
@@ -25,7 +25,7 @@ public class MainActivity5 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main5);
+        setContentView(R.layout.feedback_activity);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -34,7 +34,7 @@ public class MainActivity5 extends AppCompatActivity {
 
         Button result = findViewById(R.id.resultBttn);
 
-        nextActiviyIntent = new Intent(this, MainResult.class);
+        nextActiviyIntent = new Intent(this, ResultActivity.class);
 
         ImageView smile = findViewById(R.id.HappyImg);
         smile.setOnClickListener(view -> {

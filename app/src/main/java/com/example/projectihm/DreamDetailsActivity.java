@@ -29,9 +29,9 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainActivity2 extends AppCompatActivity {
+public class DreamDetailsActivity extends AppCompatActivity {
 
-    public static final String TAG = "MainActivity2";
+    public static final String TAG = "DreamDetailsActivity";
 
     public Intent nextActiviyIntent;
     private SeekBar dreamFrequency;
@@ -67,7 +67,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.dream_details_activity);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -125,7 +125,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         Button next = findViewById(R.id.nextBttn2);
 //        next.setOnClickListener(view -> {
-//            startActivity(new Intent(this, MainActivity3.class));
+//            startActivity(new Intent(this, DreamEmotionActivity.class));
 //        });
 
     }
@@ -219,18 +219,18 @@ public class MainActivity2 extends AppCompatActivity {
         Disposable disposable = c.subscribeOn(Schedulers.io())
                 .subscribe((answerId) -> {
                     // success
-                    MainActivity2.this.runOnUiThread(() -> {
+                    DreamDetailsActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Answer registered", Toast.LENGTH_SHORT).show();
                         Log.d(TAG,"New answer "+answerId+" for user "+userId);
                     });
 
-                    nextActiviyIntent = new Intent(this, MainActivity3.class);
+                    nextActiviyIntent = new Intent(this, DreamEmotionActivity.class);
                     nextActiviyIntent.putExtra("USER_ID", userId);
                     nextActiviyIntent.putExtra("ANSWER_ID",answerId.intValue());
                     startActivity(nextActiviyIntent);
                 }, throwable -> {
                     //
-                    MainActivity2.this.runOnUiThread(() -> {
+                    DreamDetailsActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while registering your answers", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error on update answer", throwable);
                     });

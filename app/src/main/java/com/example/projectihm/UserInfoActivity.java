@@ -18,18 +18,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.projectihm.answers.Answers;
 import com.example.projectihm.dbmanager.AppDatabase;
 import com.example.projectihm.users.Users;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainActivity extends AppCompatActivity {
-    public static final String TAG = "MainActivity";
+public class UserInfoActivity extends AppCompatActivity {
+    public static final String TAG = "UserInfoActivity";
 
     private EditText userFirstName;
     private EditText userLastName;
@@ -42,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.user_info_activity);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        nextActiviyIntent = new Intent(this, MainActivity2.class);
+        nextActiviyIntent = new Intent(this, DreamDetailsActivity.class);
 
         LinearLayout header1 = findViewById(R.id.header_section1);
         LinearLayout body1 = findViewById(R.id.body_section1);
@@ -102,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             Disposable disposable = c.subscribeOn(Schedulers.io())
                     .subscribe((userId) -> {
                         // successful insert
-                        MainActivity.this.runOnUiThread(() -> {
+                        UserInfoActivity.this.runOnUiThread(() -> {
                             Toast.makeText(this, "Information registered", Toast.LENGTH_SHORT).show();
                             Log.d(TAG, "Added : " + user);
                         });

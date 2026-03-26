@@ -10,9 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainMenu extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainMenu";
+    private static final String TAG = "MenuActivity";
     private Button startActivityBtt;
     private Button historicBtt;
 
@@ -20,7 +20,7 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.menu_activity);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -34,11 +34,11 @@ public class MainMenu extends AppCompatActivity {
 
 
         startActivityBtt.setOnClickListener(view -> {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, UserInfoActivity.class));
         });
 
         historicBtt.setOnClickListener(view -> {
-            startActivity(new Intent(this, ActivityHistoric.class));
+            startActivity(new Intent(this, HistoricActivity.class));
         });
 
 

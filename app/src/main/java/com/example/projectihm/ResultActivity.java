@@ -2,9 +2,7 @@ package com.example.projectihm;
 
 import static java.lang.Math.max;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -23,28 +21,19 @@ import com.example.projectihm.answers.Answers;
 import com.example.projectihm.dbmanager.AppDatabase;
 import com.example.projectihm.results.Results;
 import com.example.projectihm.users.Users;
-import com.example.projectihm.users.UsersDAO;
-import android.widget.EditText;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.text.InputType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.Date;
-import java.util.concurrent.atomic.AtomicReference;
-
-import javax.xml.transform.Result;
 
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class MainResult extends AppCompatActivity {
-    public static String TAG = "MainResult";
+public class ResultActivity extends AppCompatActivity {
+    public static String TAG = "ResultActivity";
     TextView userName;
     TextView userSatisfaction;
     TextView userDreaming;
@@ -116,7 +105,7 @@ public class MainResult extends AppCompatActivity {
 
         Disposable dAnswer = answerSingle.subscribeOn(Schedulers.io())
                 .subscribe(answer -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         float joy = answer.getJoyDegree();
                         float stress = answer.getStressDegree();
                         float anger = answer.getAngerDegree();
@@ -151,7 +140,7 @@ public class MainResult extends AppCompatActivity {
 
 
                 }, throwable -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while calculating your result", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error calculating result for answer : " + answerId, throwable);
                     });
@@ -164,7 +153,7 @@ public class MainResult extends AppCompatActivity {
 
         Disposable dUser = userSingle.subscribeOn(Schedulers.io())
                 .subscribe(user -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         String name = user.getFirstName() + " " + user.getLastName();
                         userName.setText(name);
 
@@ -175,7 +164,7 @@ public class MainResult extends AppCompatActivity {
                         Log.d(TAG, "Get user info successful");
                     });
                 }, throwable -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while getting your info", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error on update answer", throwable);
                     });
@@ -197,7 +186,7 @@ public class MainResult extends AppCompatActivity {
 
         Disposable dResult = resultSingle.subscribeOn(Schedulers.io())
                 .subscribe(result -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         String opinion = result.getOpinion();
                         String emotionAnalyse = result.getEmotionAnalyse();
                         String dreamerType = result.getDreamerType();
@@ -211,7 +200,7 @@ public class MainResult extends AppCompatActivity {
                     });
 
                 }, throwable -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while calculating your result", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error getting result from DB : " + answerId, throwable);
                     });
@@ -224,7 +213,7 @@ public class MainResult extends AppCompatActivity {
 
         Disposable dUser = userSingle.subscribeOn(Schedulers.io())
                 .subscribe(user -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         String name = user.getFirstName() + " " + user.getLastName();
                         userName.setText(name);
 
@@ -234,7 +223,7 @@ public class MainResult extends AppCompatActivity {
                         Log.d(TAG, "Get user info successful");
                     });
                 }, throwable -> {
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Error while getting your info", Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "Error on update getting user info", throwable);
                     });
@@ -301,7 +290,7 @@ public class MainResult extends AppCompatActivity {
         Disposable disposable = c.subscribeOn(Schedulers.io())
                 .subscribe((resultId) -> {
                     // successful insert
-                    MainResult.this.runOnUiThread(() -> {
+                    ResultActivity.this.runOnUiThread(() -> {
                         Toast.makeText(this, "Result registered", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, "Added : " + result);
                     });

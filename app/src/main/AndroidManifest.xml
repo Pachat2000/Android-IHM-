@@ -12,25 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectIHM">
         <activity
-            android:name=".ActivityHistoric"
+            android:name=".HistoricActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity5"
+            android:name=".FeedBackActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity4"
+            android:name=".LucidDreamActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".DreamEmotionActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".DreamDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainResult"
+            android:name=".ResultActivity"
             android:exported="false" />
         <activity
-            android:name=".MainMenu"
+            android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".UserInfoActivity"
             android:exported="false" />
     </application>
 

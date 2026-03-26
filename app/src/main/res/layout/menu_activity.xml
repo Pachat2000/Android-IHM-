@@ -5,56 +5,54 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityHistoric">
+    tools:context=".MenuActivity">
 
     <ImageView
-        android:id="@+id/nightSkyImgHisto"
+        android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/nigth_sky_background"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth="match_parent"
         app:srcCompat="@drawable/nighth_sky" />
 
     <Button
-        android:id="@+id/bntClose"
+        android:id="@+id/startActivityBtt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:onClick="closeActivity"
-        android:text="@string/close"
+        android:layout_marginTop="32dp"
+        android:text="@string/start"
+        app:layout_constraintEnd_toEndOf="@+id/lblMainMenu"
+        app:layout_constraintStart_toStartOf="@+id/lblMainMenu"
+        app:layout_constraintTop_toBottomOf="@+id/lblMainMenu" />
+
+    <TextView
+        android:id="@+id/lblMainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/what_kind_of_dreamer_are_you"
+        android:textColor="#CAC3C3"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listPerson"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/bntClose"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSize" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
 
-    <TextView
-        android:id="@+id/editSize"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/HistoricBtt"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/_0"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
+        android:layout_marginTop="16dp"
+        android:text="@string/historic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/startActivityBtt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

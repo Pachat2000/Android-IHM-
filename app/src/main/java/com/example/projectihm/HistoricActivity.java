@@ -15,8 +15,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectihm.answers.Answers;
-import com.example.projectihm.answers.AnswersDAO;
 import com.example.projectihm.dbmanager.AppDatabase;
 import com.example.projectihm.users.Users;
 import com.example.projectihm.users.UsersDAO;
@@ -28,13 +26,13 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class ActivityHistoric extends AppCompatActivity {
+public class HistoricActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_historic);
+        setContentView(R.layout.historic_activity);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -57,7 +55,7 @@ public class ActivityHistoric extends AppCompatActivity {
                             UsersRecyclerViewAdapter adapter = new UsersRecyclerViewAdapter(historic, new UsersRecyclerViewAdapter.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(Users clickedUser) {
-                                    Intent intent = new Intent(ActivityHistoric.this, MainResult.class);
+                                    Intent intent = new Intent(HistoricActivity.this, ResultActivity.class);
                                     intent.putExtra("USER_ID", clickedUser.getUid());
                                     startActivity(intent);
                                 }
