@@ -85,7 +85,10 @@ public class MainResult extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Set the result page based on user answers
+     * Considering we get on this activity through answering first
+     */
     public void setResultFromAnswers() {
 
         if (userSat) {
@@ -166,6 +169,10 @@ public class MainResult extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Set the result page base on the information stored in the results table
+     * Considering we are getting on this activity throw historic
+     */
     public void setResultFromDB() {
 
         // result recuperation in database
@@ -219,11 +226,15 @@ public class MainResult extends AppCompatActivity {
                 });
     }
 
-
+    /**
+     * Set a text with the analyse made to the user, and allow them to send this text trough any other application
+     * @param view view
+     */
     protected void sendResult(View view) {
         Intent sendIntent = new Intent();
+        String textToSend = userSatisfaction.getText().toString() + "\n" + userDreaming.getText().toString() + "\n" + userEmotion.getText().toString();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, textToSend);
         sendIntent.setType("text/plain");
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);
