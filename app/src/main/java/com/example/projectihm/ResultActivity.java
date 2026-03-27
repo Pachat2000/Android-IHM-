@@ -45,9 +45,12 @@ public class ResultActivity extends AppCompatActivity {
 
     Button sendResultBtn;
     Button getResultBtn;
+    Button backBtn;
+
 
     String textResult;
     String resultFileName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,13 @@ public class ResultActivity extends AppCompatActivity {
 
         getResultBtn = findViewById(R.id.registerResultBtn);
         getResultBtn.setOnClickListener(this::registerResult);
+
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+        });
+
 
         // to know if we are getting on result page from historic activity or after answers activities
         if(answerId != -1)setResultFromAnswers();

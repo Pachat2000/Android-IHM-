@@ -80,4 +80,5 @@
     <string name="stressfullDreamer">Vos rêves semblent souvent chargés de stress ou d’inquiétude, ce qui peut être le reflet d’une pression présente dans votre vie de tous les jours.\nVotre esprit pourrait chercher à traiter ces préoccupations pendant votre sommeil.</string>
     <string name="angryfullDreamer">Vos rêves semblent marqués par de la colère ou de la frustration, ce qui peut traduire des tensions que vous ressentez dans votre quotidien.\nIl est possible que votre esprit utilise ces rêves pour exprimer des émotions que vous gardez habituellement pour vous.</string>
     <string name="sadDreamer">Vos rêves semblent teintés de tristesse ou de mélancolie, ce qui peut indiquer une certaine sensibilité émotionnelle.\nIl est possible que vos rêves soient un espace où s’expriment des émotions plus profondes ou difficiles à verbaliser.</string>
+    <string name="back">Retour</string>
 </resources>
